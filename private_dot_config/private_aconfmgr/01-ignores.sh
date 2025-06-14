@@ -52,9 +52,6 @@ IgnorePath "/etc/NetworkManager/system-connections/*"
 # TODO: contains some sensitive information, store this safely
 IgnorePath "/etc/resolv.conf"
 
-# TODO: contains disk UUIDs, not sensitive but need to be made generic because they are completely machine-specific
-IgnorePath "/etc/fstab"
-IgnorePath "/boot/loader/entries/*"
 
 ## /usr
 

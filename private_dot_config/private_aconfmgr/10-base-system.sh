@@ -17,6 +17,7 @@ AddPackage amd-ucode
 AddPackage btrfs-progs
 
 # Base system configuration
+CopyFile /etc/fstab
 CopyFile /etc/hostname
 CopyFile /etc/locale.conf
 CopyFile /etc/locale.gen
@@ -68,6 +69,8 @@ CopyFile /etc/mkinitcpio.d/linux.preset
 CreateDir /boot/EFI/Linux
 CreateDir /boot/loader/keys
 CopyFile /boot/loader/loader.conf 755
+CopyFile /boot/loader/entries/arch-fallback.conf 755
+CopyFile /boot/loader/entries/arch.conf 755
 
 
 ## Miscellaneous
