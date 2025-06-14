@@ -90,4 +90,5 @@ CopyFile /etc/vconsole.conf
 # Config management
 AddPackage chezmoi
 AddPackage git
-# TODO: add aconfmgr (little more complicated because it's AUR, I just bootstrapped it by manually installing dependencies and cloning the source repo)
+# TODO: aconfmgr seems to leave behind base-devel when installing AUR packages by itself. Manage this better.
+AddPackage --foreign aconfmgr-git
