@@ -1,0 +1,10 @@
+# Chezmoi itself
+/.config/chezmoi/
+/.local/share/chezmoi/
+
+# Temporary files
+/.cache/
+
+# History files
+/.bash_history
+/.lesshst
