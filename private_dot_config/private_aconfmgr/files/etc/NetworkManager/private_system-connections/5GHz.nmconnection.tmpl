@@ -1,0 +1,21 @@
+[connection]
+id={{ .wifiSsid }}-5GHz
+type=wifi
+
+[wifi]
+mode=infrastructure
+ssid={{ .wifiSsid }}-5GHz
+
+[wifi-security]
+auth-alg=open
+key-mgmt=wpa-psk
+psk={{ .wifiPassword }}
+
+[ipv4]
+method=auto
+
+[ipv6]
+addr-gen-mode=default
+method=auto
+
+[proxy]

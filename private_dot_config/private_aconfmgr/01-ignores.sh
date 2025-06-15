@@ -40,14 +40,11 @@ IgnorePath "/etc/subgid-"
 IgnorePath "/etc/ca-certificates/extracted/*"
 IgnorePath "/etc/ssl/certs/*"
 
-# User/group passwords
-# TODO: store these safely
-IgnorePath "/etc/gshadow"
-IgnorePath "/etc/shadow"
-
-# Wi-Fi passwords
-# TODO: store these safely as well
-IgnorePath "/etc/NetworkManager/system-connections/*"
+# Unnecessary parts of NetworkManager connections that can be safely regenerated on new systems
+function NetworkManagerConnectionFilter() {
+    grep --invert-match --extended-regexp "^(timestamp|uuid)="
+}
+AddFileContentFilter "/etc/NetworkManager/system-connections/*.nmconnection" NetworkManagerConnectionFilter
 
 
 ## /usr

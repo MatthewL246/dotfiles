@@ -33,7 +33,9 @@ CreateLink /etc/systemd/user/sockets.target.wants/p11-kit-server.socket /usr/lib
 
 # User configuration
 CopyFile /etc/group
+CopyFile /etc/gshadow
 CopyFile /etc/passwd
+CopyFile /etc/shadow
 CopyFile /etc/subgid
 CopyFile /etc/subuid
 
@@ -52,6 +54,7 @@ AddPackage wireless-regdb
 
 # Network configuration
 CopyFile /etc/NetworkManager/conf.d/use_iwd.conf
+CopyFileTo /etc/NetworkManager/system-connections/5GHz.nmconnection /etc/NetworkManager/system-connections/{{ .wifiSsid }}-5GHz.nmconnection 600
 CopyFile /etc/conf.d/wireless-regdom
 CreateDir /etc/iwd
 CreateLink /etc/systemd/system/dbus-org.freedesktop.nm-dispatcher.service /usr/lib/systemd/system/NetworkManager-dispatcher.service
