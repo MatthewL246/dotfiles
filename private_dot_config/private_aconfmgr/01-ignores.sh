@@ -49,9 +49,6 @@ IgnorePath "/etc/shadow"
 # TODO: store these safely as well
 IgnorePath "/etc/NetworkManager/system-connections/*"
 
-# TODO: contains some sensitive information, store this safely
-IgnorePath "/etc/resolv.conf"
-
 
 ## /usr
 

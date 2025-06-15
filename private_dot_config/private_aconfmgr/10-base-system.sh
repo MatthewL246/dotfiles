@@ -45,10 +45,12 @@ CreateFile /var/db/sudo/lectured/1000 600 '' matthew > /dev/null
 
 ## Internet connection and Wi-Fi setup
 
+# Network management packages
 AddPackage networkmanager
 AddPackage iwd
 AddPackage wireless-regdb
 
+# Network configuration
 CopyFile /etc/NetworkManager/conf.d/use_iwd.conf
 CopyFile /etc/conf.d/wireless-regdom
 CreateDir /etc/iwd
@@ -57,6 +59,13 @@ CreateLink /etc/systemd/system/multi-user.target.wants/NetworkManager.service /u
 CreateLink /etc/systemd/system/network-online.target.wants/NetworkManager-wait-online.service /usr/lib/systemd/system/NetworkManager-wait-online.service
 # Prevent any conflicts with IWD
 CreateLink /etc/systemd/system/wpa_supplicant.service /dev/null
+
+# Systemd-resolved DNS configuration
+CreateLink /etc/resolv.conf /run/systemd/resolve/stub-resolv.conf
+CopyFile /etc/systemd/resolved.conf.d/dns-servers.conf
+CopyFile /etc/systemd/resolved.conf.d/security.conf
+CreateLink /etc/systemd/system/dbus-org.freedesktop.resolve1.service /usr/lib/systemd/system/systemd-resolved.service
+CreateLink /etc/systemd/system/sysinit.target.wants/systemd-resolved.service /usr/lib/systemd/system/systemd-resolved.service
 
 
 ## Boot configuration
