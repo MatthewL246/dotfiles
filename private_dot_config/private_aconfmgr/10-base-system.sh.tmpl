@@ -90,6 +90,15 @@ CopyFile /etc/pacman.d/hooks/95-systemd-boot-update.hook
 CreateLink /etc/systemd/system/sysinit.target.wants/systemd-boot-update.service /usr/lib/systemd/system/systemd-boot-update.service
 CopyFile /etc/systemd/system/systemd-boot-update.service.d/update-efi-variables.conf
 
+# Extra boot tools: EFI shell and Memtest86+
+AddPackage edk2-shell
+AddPackage memtest86+-efi
+
+# Configuration for extra tools
+CopyFile /boot/loader/entries/memtest.conf 755
+CopyFile /etc/pacman.d/hooks/95-efi-shell-copy.hook
+CopyFile /etc/pacman.d/hooks/95-efi-shell-delete.hook
+
 
 ## Miscellaneous
 

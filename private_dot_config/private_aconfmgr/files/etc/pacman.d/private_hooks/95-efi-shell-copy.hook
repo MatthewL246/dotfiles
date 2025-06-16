@@ -1,0 +1,10 @@
+[Trigger]
+Operation = Install
+Operation = Upgrade
+Type = Path
+Target = usr/share/edk2-shell/*/Shell.efi
+
+[Action]
+Description = Copying EFI shell to EFI system partition...
+When = PostTransaction
+Exec = /usr/bin/cp /usr/share/edk2-shell/x64/Shell.efi /boot/shellx64.efi

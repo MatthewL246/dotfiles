@@ -1,0 +1,9 @@
+[Trigger]
+Operation = Remove
+Type = Path
+Target = usr/share/edk2-shell/*/Shell.efi
+
+[Action]
+Description = Removing EFI shell from EFI system partition...
+When = PostTransaction
+Exec = /usr/bin/rm -f /boot/shellx64.efi
