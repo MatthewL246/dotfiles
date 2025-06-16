@@ -1,11 +1,11 @@
 [connection]
-id={{ .wifiSsid }}-5GHz
+id={{ .wifiSsid}}-2.4GHz
 type=wifi
-autoconnect-priority=1
+autoconnect=false
 
 [wifi]
 mode=infrastructure
-ssid={{ .wifiSsid }}-5GHz
+ssid={{ .wifiSsid }}-2.4GHz
 
 [wifi-security]
 auth-alg=open
