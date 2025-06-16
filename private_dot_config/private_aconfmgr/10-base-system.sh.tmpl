@@ -86,6 +86,9 @@ CreateDir /boot/loader/keys
 CopyFile /boot/loader/loader.conf 755
 CopyFile /boot/loader/entries/arch-fallback.conf 755
 CopyFile /boot/loader/entries/arch.conf 755
+CopyFile /etc/pacman.d/hooks/95-systemd-boot-update.hook
+CreateLink /etc/systemd/system/sysinit.target.wants/systemd-boot-update.service /usr/lib/systemd/system/systemd-boot-update.service
+CopyFile /etc/systemd/system/systemd-boot-update.service.d/update-efi-variables.conf
 
 
 ## Miscellaneous

@@ -1,0 +1,9 @@
+[Trigger]
+Operation = Upgrade
+Type = Path
+Target = usr/lib/systemd/boot/efi/systemd-boot*.efi
+
+[Action]
+Description = Updating systemd-boot in EFI system partition...
+When = PostTransaction
+Exec = /usr/bin/systemctl restart systemd-boot-update
