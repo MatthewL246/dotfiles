@@ -49,3 +49,6 @@ alpm:x:972:
 polkitd:x:102:
 matthew:x:1000:
 git:x:971:
+avahi:x:970:
+fwupd:x:969:
+passim:x:968:
