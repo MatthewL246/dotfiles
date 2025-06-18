@@ -90,9 +90,9 @@ CreateLink /etc/systemd/system/plymouth-quit.service.wants/systemd-vconsole-setu
 # Bootloader configuration
 CreateDir /boot/EFI/Linux
 CreateDir /boot/loader/keys
-CopyFile /boot/loader/loader.conf 755
-CopyFile /boot/loader/entries/arch-fallback.conf 755
-CopyFile /boot/loader/entries/arch.conf 755
+CopyFile /boot/loader/loader.conf 600
+CopyFile /boot/loader/entries/arch-fallback.conf 600
+CopyFile /boot/loader/entries/arch.conf 600
 CopyFile /etc/pacman.d/hooks/95-systemd-boot-update.hook
 CreateLink /etc/systemd/system/sysinit.target.wants/systemd-boot-update.service /usr/lib/systemd/system/systemd-boot-update.service
 CopyFile /etc/systemd/system/systemd-boot-update.service.d/update-efi-variables.conf
@@ -102,7 +102,7 @@ AddPackage edk2-shell
 AddPackage memtest86+-efi
 
 # Configuration for extra tools
-CopyFile /boot/loader/entries/memtest.conf 755
+CopyFile /boot/loader/entries/memtest.conf 600
 CopyFile /etc/pacman.d/hooks/95-efi-shell-copy.hook
 CopyFile /etc/pacman.d/hooks/95-efi-shell-delete.hook
 
