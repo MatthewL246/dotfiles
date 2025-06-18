@@ -1,0 +1,21 @@
+# mkinitcpio preset file for the 'linux' package
+
+#ALL_config="/etc/mkinitcpio.conf"
+# Avoid copying the vmlinuz to /boot for a few reasons:
+# 1. It't just unnecessary when using UKIs
+# 2. Someone with access to the unencrypted and unsigned /boot/vmlinuz-linux could tamper with it
+#
+# Note: it should be possible to directly use /usr/lib/modules/$KERNEL_VERSION/vmlinuz here, but that would require dynamically getting the correct installed kernel version. It seems better to just let the pacman hook handle the copying but change the location to somewhere on the root partition.
+ALL_kver="/usr/lib/modules/vmlinuz-linux"
+
+PRESETS=('default' 'fallback')
+
+#default_config="/etc/mkinitcpio.conf"
+#default_image="/boot/initramfs-linux.img"
+default_uki="/boot/EFI/Linux/arch-linux.efi"
+default_options="--splash /usr/share/systemd/bootctl/splash-arch.bmp"
+
+#fallback_config="/etc/mkinitcpio.conf"
+#fallback_image="/boot/initramfs-linux-fallback.img"
+fallback_uki="/boot/EFI/Linux/arch-linux-fallback.efi"
+fallback_options="-S autodetect"

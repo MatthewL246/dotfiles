@@ -61,13 +61,31 @@ IgnorePath "/usr/share/mime/*"
 # Files with properties automatically modified
 IgnorePath "/usr/bin/groupmems"
 
+# Secure-Boot-signed systemd-boot files (managed by sbctl)
+IgnorePath "/usr/lib/systemd/boot/efi/*.signed"
 
 ## /var
 
 # Auto-generated files
 IgnorePath "/var/.updated"
-# Persistent program state information - not sure about completely ignoring this
-IgnorePath "/var/lib/*"
+
+# Unnecessary program state information
+IgnorePath "/var/lib/dbus/*"
+IgnorePath "/var/lib/iwd/*"
+IgnorePath "/var/lib/lastlog/*"
+IgnorePath "/var/lib/libuuid/*"
+IgnorePath "/var/lib/machines/*"
+IgnorePath "/var/lib/NetworkManager/*"
+IgnorePath "/var/lib/portables/*"
+IgnorePath "/var/lib/private/*"
+IgnorePath "/var/lib/systemd/*"
+IgnorePath "/var/lib/fwupd/*"
+IgnorePath "/var/lib/passim/*"
+IgnorePath "/var/lib/tpm2-tss/*"
+
+# Secure Boot keys should be unique per device, and it would honestly be easier to just regenerate them and reset the UEFI back to setup mode than store them safely
+IgnorePath "/var/lib/sbctl/GUID"
+IgnorePath "/var/lib/sbctl/keys/*"
 
 # Pacman database
 IgnorePath "/var/lib/pacman/local/*"

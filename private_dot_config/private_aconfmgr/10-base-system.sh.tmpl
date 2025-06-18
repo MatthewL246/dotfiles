@@ -78,7 +78,7 @@ CreateLink /etc/systemd/system/sysinit.target.wants/systemd-resolved.service /us
 
 # Initramfs configuration
 CopyFile /etc/mkinitcpio.conf
-CopyFile /etc/mkinitcpio.d/linux.preset
+CopyFileTo /etc/mkinitcpio.d/linux.preset-uki-disabled /etc/mkinitcpio.d/linux.preset
 
 # Bootloader configuration
 CreateDir /boot/EFI/Linux

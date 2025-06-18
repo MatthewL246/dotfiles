@@ -1,0 +1,14 @@
+{
+    "/boot/memtest86+/memtest.efi": {
+        "file": "/boot/memtest86+/memtest.efi",
+        "output_file": "/boot/memtest86+/memtest.efi"
+    },
+    "/usr/lib/systemd/boot/efi/systemd-bootia32.efi": {
+        "file": "/usr/lib/systemd/boot/efi/systemd-bootia32.efi",
+        "output_file": "/usr/lib/systemd/boot/efi/systemd-bootia32.efi.signed"
+    },
+    "/usr/lib/systemd/boot/efi/systemd-bootx64.efi": {
+        "file": "/usr/lib/systemd/boot/efi/systemd-bootx64.efi",
+        "output_file": "/usr/lib/systemd/boot/efi/systemd-bootx64.efi.signed"
+    }
+}

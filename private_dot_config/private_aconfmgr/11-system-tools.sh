@@ -9,3 +9,9 @@ AddPackage udisks2
 CopyFile /etc/fwupd/remotes.d/lvfs-testing.conf
 CopyFile /etc/fwupd/remotes.d/lvfs.conf
 CreateLink /etc/systemd/system/timers.target.wants/fwupd-refresh.timer /usr/lib/systemd/system/fwupd-refresh.timer
+
+# Tools for UEFI and TPM management
+AddPackage efibootmgr
+AddPackage efitools
+AddPackage mokutil
+AddPackage tpm2-tools
