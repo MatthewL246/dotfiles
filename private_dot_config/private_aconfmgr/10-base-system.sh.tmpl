@@ -83,6 +83,9 @@ CopyFileTo /etc/mkinitcpio.d/linux.preset-uki-disabled /etc/mkinitcpio.d/linux.p
 # Boot splash screen setup
 AddPackage plymouth
 # TODO: also modifies /etc/mkinitramfs.conf, add a modification step here or switch to mkinitramfs.conf.d
+CopyFile /etc/cmdline.d/splash-screen.conf
+CopyFile /etc/systemd/system/systemd-vconsole-setup-after-plymouth.service
+CreateLink /etc/systemd/system/plymouth-quit.service.wants/systemd-vconsole-setup-after-plymouth.service /etc/systemd/system/systemd-vconsole-setup-after-plymouth.service
 
 # Bootloader configuration
 CreateDir /boot/EFI/Linux

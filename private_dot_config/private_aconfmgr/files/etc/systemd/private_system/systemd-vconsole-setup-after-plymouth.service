@@ -1,0 +1,16 @@
+# Workaround for systemd-vconsole-setup.service not applying virtual console settings due to Plymouth taking over the virtual console,
+# which causes the message "All allocated VCs are currently busy, skipping initialization of font and keyboard settings."
+
+[Unit]
+Description=Re-run virtual console setup after Plymouth splash screen quits
+# Service should not be started if Plymouth didn't run
+Requisite=plymouth-start.service
+After=plymouth-start.service plymouth-quit-wait.service systemd-vconsole-setup.service
+
+[Service]
+Type=oneshot
+RemainAfterExit=true
+ExecStart=/usr/bin/systemctl restart systemd-vconsole-setup.service
+
+[Install]
+WantedBy=plymouth-quit-wait.service
