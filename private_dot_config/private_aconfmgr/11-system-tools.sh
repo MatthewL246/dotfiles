@@ -32,3 +32,33 @@ CopyFile /etc/ufw/after6.rules
 CopyFile /etc/ufw/ufw.conf
 CopyFile /etc/ufw/user.rules
 CopyFile /etc/ufw/user6.rules
+
+
+## Pacman tools
+AddPackage reflector
+AddPackage pacman-contrib
+AddPackage pacutils
+AddPackage pkgstats
+
+# Automatically refresh mirrors
+CopyFile /etc/xdg/reflector/reflector.conf
+CreateLink /etc/systemd/system/timers.target.wants/reflector.timer /usr/lib/systemd/system/reflector.timer
+
+# Automatically update files database
+CreateLink /etc/systemd/system/timers.target.wants/pacman-filesdb-refresh.timer /usr/lib/systemd/system/pacman-filesdb-refresh.timer
+
+# Automatically clean up cache
+CreateLink /etc/systemd/system/timers.target.wants/paccache.timer /usr/lib/systemd/system/paccache.timer
+
+# Automatically submit package statistics
+CopyFile /etc/systemd/system/pkgstats.timer.d/allow-enabling.conf
+CreateLink /etc/systemd/system/timers.target.wants/pkgstats.timer /usr/lib/systemd/system/pkgstats.timer
+
+
+## Locate for finding files
+AddPackage plocate
+
+# Automatically update the database
+CopyFile /etc/systemd/system/plocate-updatedb.timer.d/allow-enabling.conf
+CopyFile /etc/systemd/system/plocate-updatedb.timer.d/make-hourly.conf
+CreateLink /etc/systemd/system/timers.target.wants/plocate-updatedb.timer /usr/lib/systemd/system/plocate-updatedb.timer
