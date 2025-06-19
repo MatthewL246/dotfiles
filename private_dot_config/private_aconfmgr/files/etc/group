@@ -54,3 +54,6 @@ fwupd:x:969:
 passim:x:968:
 locate:x:21:
 nvidia-persistenced:x:143:
+i2c:x:967:
+rtkit:x:133:
+sddm:x:966:
