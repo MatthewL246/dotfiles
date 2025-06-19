@@ -1,5 +1,9 @@
 ## System tools and services
 
+## Automatic TRIM for SSDs
+CreateLink /etc/systemd/system/timers.target.wants/fstrim.timer /usr/lib/systemd/system/fstrim.timer
+
+
 ## Firmware updates
 AddPackage fwupd
 # Used for fwupd UEFI updates
