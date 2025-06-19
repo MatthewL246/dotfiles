@@ -109,8 +109,10 @@ CopyFile /etc/pacman.d/hooks/95-efi-shell-delete.hook
 
 ## Miscellaneous
 
-# Pacman configuration
+# Pacman and makepkg configuration
 CopyFile /etc/pacman.conf
+CopyFile /etc/makepkg.conf
+CopyFile /etc/makepkg.conf.d/rust.conf
 
 # Offline documentation files
 AddPackage man-db
