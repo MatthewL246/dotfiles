@@ -7,3 +7,6 @@ LABEL=Arch_Linux_root / btrfs rw,relatime,ssd,discard=async,space_cache=v2,subvo
 
 # /dev/nvme0n1p1, EFI system partition
 LABEL=EFI_SYSTEM /boot vfat rw,relatime,nodev,nosuid,noexec,fmask=0177,dmask=0022,codepage=437,iocharset=ascii,shortname=mixed,utf8,errors=remount-ro 0 2
+
+# Swap file
+/swap/swapfile none swap defaults 0 0

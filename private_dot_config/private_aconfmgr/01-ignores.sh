@@ -97,3 +97,10 @@ IgnorePath "/var/lib/pacman/sync/*"
 # Logs and temporary files
 IgnorePath "/var/log/*"
 IgnorePath "/var/tmp/*"
+
+
+## Other
+
+# Swapfile
+# TODO: not declarative
+IgnorePath "/swap/swapfile"
