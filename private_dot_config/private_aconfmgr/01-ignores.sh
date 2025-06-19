@@ -50,11 +50,15 @@ AddFileContentFilter "/etc/NetworkManager/system-connections/*.nmconnection" Net
 ## /usr
 
 # Auto-generated files
+IgnorePath "/usr/lib/gdk-pixbuf-*/loaders.cache"
 IgnorePath "/usr/lib/gio/modules/giomodule.cache"
+IgnorePath "/usr/lib/gtk-*/immodules.cache"
 IgnorePath "/usr/lib/locale/locale-archive"
 IgnorePath "/usr/lib/modules/*"
 IgnorePath "/usr/lib/udev/hwdb.bin"
+IgnorePath "/usr/share/applications/mimeinfo.cache"
 IgnorePath "/usr/share/glib-2.0/schemas/gschemas.compiled"
+IgnorePath "/usr/share/icons/*/icon-theme.cache"
 IgnorePath "/usr/share/info/dir"
 IgnorePath "/usr/share/mime/*"
 

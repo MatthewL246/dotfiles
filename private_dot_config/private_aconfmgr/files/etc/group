@@ -53,3 +53,4 @@ avahi:x:970:
 fwupd:x:969:
 passim:x:968:
 locate:x:21:
+nvidia-persistenced:x:143:

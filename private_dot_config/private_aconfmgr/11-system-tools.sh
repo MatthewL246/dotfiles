@@ -66,3 +66,19 @@ AddPackage plocate
 CopyFile /etc/systemd/system/plocate-updatedb.timer.d/allow-enabling.conf
 CopyFile /etc/systemd/system/plocate-updatedb.timer.d/make-hourly.conf
 CreateLink /etc/systemd/system/timers.target.wants/plocate-updatedb.timer /usr/lib/systemd/system/plocate-updatedb.timer
+
+
+## Nvidia driver
+AddPackage nvidia-open
+AddPackage nvidia-settings
+
+# Pacman hook that automatically updates the initramfs when the Nvidia driver is updated, necessary due to early Nvidia kernel module loading
+# TODO: yet another thing that modifies mkinitramfs.conf
+CopyFile /etc/pacman.d/hooks/nvidia-initramfs.hook
+
+CreateLink /etc/systemd/system/systemd-hibernate.service.wants/nvidia-hibernate.service /usr/lib/systemd/system/nvidia-hibernate.service
+CreateLink /etc/systemd/system/systemd-hibernate.service.wants/nvidia-resume.service /usr/lib/systemd/system/nvidia-resume.service
+CreateLink /etc/systemd/system/systemd-suspend-then-hibernate.service.wants/nvidia-resume.service /usr/lib/systemd/system/nvidia-resume.service
+CreateLink /etc/systemd/system/systemd-suspend.service.wants/nvidia-resume.service /usr/lib/systemd/system/nvidia-resume.service
+CreateLink /etc/systemd/system/systemd-suspend.service.wants/nvidia-suspend.service /usr/lib/systemd/system/nvidia-suspend.service
+
