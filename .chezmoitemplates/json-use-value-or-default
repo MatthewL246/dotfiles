@@ -1,0 +1,17 @@
+{{- /* Usage: {{ template "json-use-value-or-default" (list .chezmoi.targetFile "jq-query" default indent-size base-indent-level) }} */ -}}
+
+{{- $targetFile := index . 0 -}}
+{{- $query := index . 1 -}}
+{{- $default := index . 2 -}}
+{{- $indentSize := index . 3 -}}
+{{- $baseIndentLevel := index . 4 -}}
+
+{{- $result := $default -}}
+
+{{- if stat $targetFile -}}
+    {{- with include $targetFile | fromJson | jq $query | first -}}
+        {{- $result = . -}}
+    {{- end -}}
+{{- end }}
+
+{{- $result | toPrettyJson (repeat $indentSize " ") | indent $baseIndentLevel | trim -}}

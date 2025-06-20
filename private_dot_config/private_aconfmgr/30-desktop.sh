@@ -57,3 +57,7 @@ AddPackage kwalletmanager # KDE Wallet management
 AddPackage noto-fonts-cjk # Chinese, Japanese, and Korean characters for Noto Fonts
 AddPackage noto-fonts-extra # Extra variants of Noto Fonts
 AddPackage xdg-desktop-portal-gtk # Sync some settings from KDE to GTK apps
+
+# KDE user settings
+CopyFile /var/lib/AccountsService/icons/matthew
+CopyFile /var/lib/AccountsService/users/matthew

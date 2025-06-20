@@ -1,0 +1,15 @@
+{{- /* Usage: {{ template "ini-use-value-or-default" (list .chezmoi.targetFile "jq-query" default) }} */ -}}
+
+{{- $targetFile := index . 0 -}}
+{{- $query := index . 1 -}}
+{{- $default := index . 2 -}}
+
+{{- $result := $default -}}
+
+{{- if stat $targetFile -}}
+    {{- with include $targetFile | fromIni | jq $query | first -}}
+        {{- $result = . -}}
+    {{- end -}}
+{{- end -}}
+
+{{- $result -}}

@@ -1,0 +1,27 @@
+[General]
+Days Meta Infos=30
+Quickopen Filter Mode=0
+Quickopen List Mode=true
+Save Meta Infos=true
+Show Full Path in Title=false
+Show Menu Bar=true
+Show Status Bar=true
+Show Tab Bar=true
+Show Url Nav Bar=true
+
+[MainWindow]
+{{/* Hack because Kate uses colons in its INI keys, so Chezmoi can't parse them correctly */}}
+{{- if stat .chezmoi.targetFile -}}
+    {{- regexFindAll ".* screen: (Height|Width)=.*" (include .chezmoi.targetFile) -1 | join "\n" -}}
+{{- end }}
+
+[filetree]
+editShade=183,220,246
+listMode=false
+middleClickToClose=false
+shadingEnabled=true
+showCloseButton=false
+showFullPathOnRoots=false
+showToolbar=true
+sortRole=0
+viewShade=211,190,222

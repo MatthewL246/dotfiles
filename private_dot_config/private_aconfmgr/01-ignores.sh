@@ -93,6 +93,13 @@ IgnorePath "/var/lib/fwupd/*"
 IgnorePath "/var/lib/passim/*"
 IgnorePath "/var/lib/tpm2-tss/*"
 
+# Annoying empty directories
+IgnorePath "/var/lib/lastlog"
+IgnorePath "/var/lib/libuuid"
+IgnorePath "/var/lib/machines"
+IgnorePath "/var/lib/portables"
+IgnorePath "/var/lib/private"
+
 # Secure Boot keys should be unique per device, and it would honestly be easier to just regenerate them and reset the UEFI back to setup mode than store them safely
 IgnorePath "/var/lib/sbctl/GUID"
 IgnorePath "/var/lib/sbctl/keys/*"

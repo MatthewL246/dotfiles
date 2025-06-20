@@ -1,0 +1,6 @@
+#!/bin/sh
+
+# TODO: a better way to save the user.ini with file when dconf settings change (and avoid unintentional overwriting)
+
+# user.ini (dconf user settings) hash: {{ joinPath .chezmoi.sourceFile ".." "user.ini" | include | sha256sum }}
+dconf load / <{{ joinPath .chezmoi.sourceDir .chezmoi.sourceFile ".." "user.ini" | quote }}
