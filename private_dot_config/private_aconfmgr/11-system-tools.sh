@@ -39,10 +39,12 @@ CopyFile /etc/ufw/user6.rules
 
 
 ## Pacman tools
-AddPackage reflector
-AddPackage pacman-contrib
-AddPackage pacutils
-AddPackage pkgstats
+AddPackage expac # Pacman database query utility
+AddPackage reflector # Automatic mirrorlist updates
+AddPackage pkgstats # Installed packages telemetry
+AddPackage pacutils # Most pac* scripts
+AddPackage pacman-contrib # checkupdates, some other pac* scripts, updpkgsums
+AddPackage archlinux-contrib # checkservices, a few other scripts
 
 # Automatically refresh mirrors
 CopyFile /etc/xdg/reflector/reflector.conf
