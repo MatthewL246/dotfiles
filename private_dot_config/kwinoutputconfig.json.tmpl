@@ -2,16 +2,20 @@
     {
         "data": [
             {
+                "allowDdcCi": true,
                 "allowSdrSoftwareBrightness": false,
                 "autoRotation": "InTabletMode",
                 "brightness": {{ template "json-use-value-or-default" (list .chezmoi.targetFile ".[] | .data[] | select (.edidHash == \"31bdbb74bf929858cda32498d97feaf6\") | .brightness" 0.5 4 16) }},
                 "colorPowerTradeoff": "PreferEfficiency",
                 "colorProfileSource": "sRGB",
                 "connectorName": "DP-1",
+                "detectedDdcCi": true,
                 "edidHash": "31bdbb74bf929858cda32498d97feaf6",
                 "edidIdentifier": "AUS 10122 53171 9 2020 0",
+                "edrPolicy": "always",
                 "highDynamicRange": false,
                 "iccProfilePath": "",
+                "maxBitsPerColor": 0,
                 "mode": {{ template "json-use-value-or-default" (list .chezmoi.targetFile ".[] | .data[] | select (.edidHash == \"31bdbb74bf929858cda32498d97feaf6\") | .mode" (dict "height" 1440 "refreshRate" 74925 "width" 2560) 4 16) }},
                 "overscan": 0,
                 "rgbRange": "Automatic",
@@ -19,6 +23,7 @@
                 "sdrBrightness": 200,
                 "sdrGamutWideness": 0,
                 "transform": "Normal",
+                "uuid": "9a1e5513-af7d-4398-a435-7cc7043aa7ba",
                 "vrrPolicy": "Automatic",
                 "wideColorGamut": false
             }
@@ -37,7 +42,8 @@
                             "x": 0,
                             "y": 0
                         },
-                        "priority": 0
+                        "priority": 0,
+                        "replicationSource": ""
                     }
                 ]
             }
