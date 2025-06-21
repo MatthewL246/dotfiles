@@ -61,3 +61,7 @@ AddPackage xdg-desktop-portal-gtk # Sync some settings from KDE to GTK apps
 # KDE user settings
 CopyFile /var/lib/AccountsService/icons/matthew
 CopyFile /var/lib/AccountsService/users/matthew
+
+# Applications useful for Chezmoi
+AddPackage kompare # 2-way diffs
+AddPackage kdiff3 # 3-way merges

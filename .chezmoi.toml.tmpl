@@ -1,0 +1,13 @@
+# chezmoi:template:left-delimiter=[[ right-delimiter=]]
+
+[[ with lookPath "kompare" -]]
+[diff]
+command = "[[ . ]]"
+args = ["-c", "{{ .Target }}", "{{ .Destination }}"]
+[[- end ]]
+
+[[ with lookPath "kdiff3" -]]
+[merge]
+command = "[[ . ]]"
+args = ["--merge", "{{ .Target }}", "{{ .Source }}", "{{ .Destination }}", "--output", "{{ .Source }}"]
+[[- end ]]
