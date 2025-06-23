@@ -5,13 +5,18 @@
 # Base system packages
 AddPackage base
 AddPackage linux
-AddPackage linux-firmware
 AddPackage dosfstools
 AddPackage e2fsprogs
 AddPackage nano
 
 # For AMD CPUs
 AddPackage amd-ucode
+
+# For various hardware
+AddPackage linux-firmware-intel
+AddPackage linux-firmware-nvidia
+AddPackage linux-firmware-other
+AddPackage linux-firmware-realtek
 
 # For BTRFS
 AddPackage btrfs-progs
