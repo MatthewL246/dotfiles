@@ -24,7 +24,6 @@
 
 # Files managed by scripts
 /.config/dconf/user
-/.config/dconf/user.ini
 
 # Secrets that can be safely regenerated
 /.config/kdeconnect/certificate.pem
