@@ -1,0 +1,81 @@
+#!/usr/bin/env bash
+
+set -euo pipefail
+
+if [[ "${BASH_SOURCE[0]}" = "${0}" ]]; then
+    echo "This script needs to be sourced, not executed."
+    exit 1
+fi
+
+term_reset=$(tput sgr0)
+term_bold=$(tput bold)
+term_underline=$(tput smul)
+term_nounderline=$(tput rmul)
+term_reverse=$(tput rev)
+term_standout=$(tput smso)
+term_nostandout=$(tput rmso)
+term_dim=$(tput dim)
+
+term_red=$(tput setaf 1)
+term_green=$(tput setaf 2)
+term_yellow=$(tput setaf 3)
+term_blue=$(tput setaf 4)
+term_magenta=$(tput setaf 5)
+term_cyan=$(tput setaf 6)
+term_white=$(tput setaf 7)
+
+term_bgred=$(tput setab 1)
+term_bggreen=$(tput setab 2)
+term_bgyellow=$(tput setab 3)
+term_bgblue=$(tput setab 4)
+term_bgmagenta=$(tput setab 5)
+term_bgcyan=$(tput setab 6)
+term_bgwhite=$(tput setab 7)
+
+# Usage: interactive_prompt message shell_dir char1 text1 command1 char2 text2 command2 ...
+# where "message" is displayed before the prompt, "shell_dir" is the directory to spawn a shell in if chosen, "charN" is a character that triggers a command, "textN" is shown in the prompt as a hint, and "commandN" is run if charN is typed.
+# Returns: 0 normally, 1 if the default "continue" option is selected
+# Scripts are suggested to run this in a loop until it returns 1
+function interactive_prompt() {
+    # General color conventions: red means modifying current state, green means saving current state, yellow means danger (like deleting), blue means viewing (without side effects), cyan means taking some other action (potentially with side effects), bold without color is for the default options
+
+    local promptText="$1"
+    local shell_dir="$2"
+    shift 2
+
+    local characters=()
+    local commands=()
+
+    while [[ $# -gt 0 ]]; do
+        if [[ $# -lt 3 ]]; then
+            echo "Wrong number of arguments provided to $FUNCNAME"
+            exit 1
+        fi
+
+        characters+=("$1")
+        promptText+=$'\n'"  - $2"
+        commands+=("$3")
+
+        shift 3
+    done
+
+    characters+=("/" "." "")
+    promptText+=$'\n'"  - ${term_bold}${term_underline}/${term_reset}: open shell"
+    promptText+=$'\n'"  - ${term_bold}${term_underline}.${term_reset}: open file manager"
+    promptText+=$'\n'"  - ${term_bold}${term_underline}Enter${term_reset}: continue"
+    commands+=("cd \"$shell_dir\" && bash" "dolphin \"$shell_dir\" >/dev/null 2>&1 &" "return 1")
+
+    local response=""
+    echo "$promptText"
+    read -p "> " -n 1 response
+    echo
+
+    local i
+    for ((i = 0; i < ${#characters[@]}; i++)); do
+        if [[ "$response" == "${characters[$i]}" ]]; then
+            # Sub-commands failing in here is okay, as the caller should just continue the loop and bring back the prompt
+            eval "${commands[$i]}" || true
+            break
+        fi
+    done
+}

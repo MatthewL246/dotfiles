@@ -1,0 +1,152 @@
+#!/usr/bin/env bash
+
+source "$(dirname "$(realpath "$0")")/common"
+
+function manage_system_config() {
+    echo "${term_bold}=== Managing system config with aconfmgr ===${term_reset}"
+
+    local aconfmgr_tmp="/tmp/aconfmgr-$USER"
+
+    function aconfmgr_diff() {
+        # Set up the aconfmgr_tmp directory
+        aconfmgr diff /
+
+        # The original file properties file isn't useful for diffing
+        rm "$aconfmgr_tmp/system/orig-file-props.txt"
+        # The system list of packages is sorted, but output list is in the order that packages are added in the scripts. This is bad for diffing, so ensue that everything is sorted to be safe.
+        for file in $aconfmgr_tmp/*/*.txt; do
+            sort "$file" --output "$file"
+        done
+        # The output list of file properties has extraneous entries (for all files without any overridden metadata) that are not in the system list. Those entries can be removed (and fortunately all have a double tab in the same place).
+        sed -i '/\t\t/d' "$aconfmgr_tmp/output/file-props.txt"
+
+        # Use kompare for a more thorough diff
+        if [[ -n "${DISPLAY:-}" ]]; then
+            kompare -c "$aconfmgr_tmp/output/" "$aconfmgr_tmp/system/" >/dev/null 2>&1 &
+        else
+            # TODO: better CLI directory diff tool
+            diff --recursive --side-by-side --suppress-common-lines --color=always "$aconfmgr_tmp/output/" "$aconfmgr_tmp/system/" | less -r
+        fi
+    }
+
+    while true; do
+        interactive_prompt "${term_bold}What next?${term_reset}" "$HOME/.config/aconfmgr" \
+            "a" "${term_red}${term_bold}${term_underline}a${term_nounderline}pply${term_reset}: update system to match configuration" "aconfmgr apply" \
+            "s" "${term_green}${term_bold}${term_underline}s${term_nounderline}ave${term_reset}: update configuration to match system" "aconfmgr save" \
+            "d" "${term_blue}${term_bold}${term_underline}d${term_nounderline}iff${term_reset}: compare configuration and system states" "aconfmgr_diff" \
+            "l" "${term_blue}${term_bold}See ${term_underline}l${term_nounderline}ost files${term_reset}: run lostfiles to find files that aren't managed by pacman" "sudo lostfiles | less" \
+            "c" "${term_cyan}${term_bold}${term_underline}c${term_nounderline}heck${term_reset}: check and lint configuration" "aconfmgr check" \
+            || break
+    done
+
+    echo "${term_bold}Check results:${term_reset}"
+    aconfmgr check
+}
+
+function manage_dotfiles() {
+    echo "${term_bold}=== Managing dotfiles with chezmoi ===${term_reset}"
+
+    echo "Dumping dconf state..."
+    systemctl start --user dump-dconf-state.service
+
+    local source_path="$(chezmoi source-path)"
+    local target_path="$(chezmoi target-path)"
+
+    echo "${term_bold}Chezmoi status:${term_reset}"
+    chezmoi status
+    echo "${term_bold}Unmanaged files:${term_reset}"
+    chezmoi unmanaged
+
+    local chezmoi_unmanaged
+    readarray -t chezmoi_unmanaged <<<$(chezmoi unmanaged)
+
+    # Deal with unmanaged files first, as unmanaged files may end up being in the status later if added as a template and edited
+    for ((i = 0; i < ${#chezmoi_unmanaged[@]}; i++)); do
+        local current_unmanaged="${chezmoi_unmanaged[i]}"
+        local absolute_path="$target_path/$current_unmanaged"
+
+        while true; do
+            local nonempty_if_still_unmanaged="$(chezmoi unmanaged "$absolute_path" 2>/dev/null || true)"
+
+            if [[ -z "$nonempty_if_still_unmanaged" ]]; then
+                break
+            fi
+
+            if [[ -d "$absolute_path" ]]; then
+                interactive_prompt "${term_bold}Current unmanaged directory ($((i + 1))/${#chezmoi_unmanaged[@]}):${term_reset} $current_unmanaged" "$absolute_path" \
+                    "a" "${term_green}${term_bold}${term_underline}A${term_nounderline}dd${term_reset}: directly add all files in the directory to the source state" "chezmoi add \"$absolute_path\"" \
+                    "d" "${term_yellow}${term_bold}${term_underline}D${term_nounderline}elete${term_reset}: delete this directory (to the trash)" "trash \"$absolute_path\"" \
+                    "i" "${term_cyan}${term_bold}${term_underline}I${term_nounderline}gnore${term_reset}: edit .chezmoiignore to ignore this directory in the future" "$EDITOR \"$source_path/.chezmoiignore\"" \
+                    "l" "${term_blue}${term_bold}${term_underline}L${term_nounderline}ist contents${term_reset}" "ls -l --almost-all --recursive --human-readable --color \"$absolute_path\"" \
+                    || break
+            else
+                interactive_prompt "${term_bold}Current unmanaged file ($((i + 1))/${#chezmoi_unmanaged[@]}):${term_reset} $current_unmanaged" "$(dirname "$absolute_path")" \
+                    "a" "${term_green}${term_bold}${term_underline}A${term_nounderline}dd${term_reset}: directly add this file to the source state" "chezmoi add \"$absolute_path\"" \
+                    "t" "${term_green}${term_bold}Add as ${term_underline}t${term_nounderline}emplate${term_reset}: add this file to the source state as a template and edit it" "chezmoi add --template \"$absolute_path\" && ($EDITOR \"$absolute_path\" & chezmoi edit --watch \"$absolute_path\")" \
+                    "d" "${term_yellow}${term_bold}${term_underline}D${term_nounderline}elete${term_reset}: delete this file (to the trash)" "trash \"$absolute_path\"" \
+                    "i" "${term_cyan}${term_bold}${term_underline}I${term_nounderline}gnore${term_reset}: edit .chezmoiignore to ignore this file in the future" "$EDITOR \"$source_path/.chezmoiignore\"" \
+                    "v" "${term_blue}${term_bold}${term_underline}V${term_nounderline}iew file${term_reset}" "less \"$absolute_path\"" \
+                    "e" "${term_cyan}${term_bold}${term_underline}E${term_nounderline}dit file${term_reset}" "$EDITOR \"$absolute_path\"" \
+                    || break
+            fi
+        done
+    done
+
+    local chezmoi_modified
+    readarray -t chezmoi_modified <<<$(chezmoi status | cut --characters 4-)
+
+    local i
+    for ((i = 0; i < ${#chezmoi_modified[@]}; i++)); do
+        local current_file="${chezmoi_modified[i]}"
+
+        if [[ "$current_file" == "" ]]; then
+            # The `chezmoi status` output was empty
+            break
+        fi
+
+        local absolute_path="$target_path/$current_file"
+        local file_source_path="$(chezmoi source-path "$absolute_path" || true)"
+
+        chezmoi diff --use-builtin-diff "$absolute_path"
+
+        while true; do
+            local current_status="$(chezmoi status "$absolute_path")"
+
+            if [[ -z "$current_status" ]]; then
+                break
+            fi
+
+            interactive_prompt "${term_bold}Current modification ($((i + 1))/${#chezmoi_modified[@]}):${term_reset} $current_status" "$(dirname "$absolute_path")" \
+                "d" "${term_blue}${term_bold}${term_underline}D${term_nounderline}iff${term_reset}: compare the target state and the file's current state" "chezmoi diff \"$absolute_path\"" \
+                "y" "${term_red}${term_bold}Appl${term_underline}y${term_reset}: overwrite all changes in this file with the target state" "chezmoi apply \"$absolute_path\"" \
+                "a" "${term_green}${term_bold}${term_underline}A${term_nounderline}dd${term_reset}: directly add this file to the source state" "chezmoi add \"$absolute_path\"" \
+                "m" "${term_green}${term_bold}${term_underline}M${term_nounderline}erge${term_reset}: merge changes made to this file into the source state" "chezmoi merge \"$absolute_path\"" \
+                "f" "${term_yellow}${term_bold}${term_underline}F${term_nounderline}orget${term_reset}: remove this file from the source state and edit .chezmoiignore" "chezmoi forget \"$absolute_path\" && $EDITOR \"$source_path/.chezmoiignore\"" \
+                "d" "${term_yellow}${term_bold}${term_underline}D${term_nounderline}estroy${term_reset}: ${term_red}${term_bold}delete this file${term_reset} and remove it from the source state" "chezmoi destroy \"$absolute_path\"" \
+                "t" "${term_blue}${term_bold}View ${term_underline}t${term_nounderline}arget file${term_reset}: view $absolute_path" "less \"$absolute_path\"" \
+                "s" "${term_blue}${term_bold}View ${term_underline}s${term_nounderline}ource file${term_reset}: view $file_source_path" "less \"$file_source_path\"" \
+                "e" "${term_cyan}${term_bold}${term_underline}E${term_nounderline}dit target file${term_reset}" "$EDITOR \"$absolute_path\"" \
+                "i" "${term_cyan}${term_bold}Ed${term_underline}i${term_nounderline}t source file${term_reset}" "chezmoi edit \"$absolute_path\"" \
+                "?" "${term_blue}${term_bold}${term_underline}?${term_reset}: get file status" "chezmoi status \"$absolute_path\"" \
+                || break
+        done
+    done
+}
+
+function manage_dotfiles_repo() {
+    echo "${term_bold}=== Managing dotfiles Git repo ===${term_reset}"
+
+    while true; do
+        interactive_prompt "${term_bold}Git status:${term_reset} $(chezmoi git -- -c color.ui=always status)" "$(chezmoi source-path)" \
+            "s" "${term_green}${term_bold}${term_underline}S${term_nounderline}tage all changes${term_reset}" "chezmoi git add ." \
+            "d" "${term_blue}${term_bold}${term_underline}D${term_nounderline}iff staged changes${term_reset}" "chezmoi git diff -- --cached" \
+            "c" "${term_green}${term_bold}${term_underline}C${term_nounderline}ommit staged changes${term_reset}" "chezmoi git commit" \
+            "p" "${term_green}${term_bold}${term_underline}P${term_nounderline}ush changes${term_reset}" "chezmoi git push"
+    done
+}
+
+manage_system_config
+manage_dotfiles
+manage_dotfiles_repo
+
+# TODO: custom chezmoi diff tool that checks display and queues for kompare folder display if applicable

@@ -13,4 +13,10 @@ export HISTCONTROL=ignoreboth
 export HISTSIZE=
 export HISTFILESIZE=
 
-export EDITOR=/usr/bin/nano
+if [[ $DISPLAY ]]; then
+    export EDITOR=/usr/bin/kwrite
+else
+    export EDITOR=/usr/bin/nano
+fi
+
+export PATH="$HOME/.local/bin:$PATH"
