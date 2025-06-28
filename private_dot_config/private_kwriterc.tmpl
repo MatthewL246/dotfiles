@@ -1,0 +1,14 @@
+[General]
+Days Meta Infos=30
+Save Meta Infos=true
+Show Full Path in Title=false
+Show Menu Bar=false
+Show Status Bar=true
+Show Tab Bar=true
+Show Url Nav Bar=false
+
+[MainWindow]
+{{/* See katerc file */}}
+{{- if stat .chezmoi.targetFile -}}
+    {{- regexFindAll ".* screen: (Height|Width)=.*" (include .chezmoi.targetFile) -1 | join "\n" -}}
+{{- end }}
