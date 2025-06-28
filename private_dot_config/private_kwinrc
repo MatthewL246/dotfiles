@@ -3,6 +3,12 @@ Id_1=8e290a87-0788-485e-ab9c-be92ef19a5e3
 Number=1
 Rows=1
 
+[NightColor]
+Active=true
+EveningBeginFixed=2000
+Mode=Times
+NightTemperature=4000
+
 [Tiling]
 padding=4
 
