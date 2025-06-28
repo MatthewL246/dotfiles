@@ -1,0 +1,5 @@
+#!/bin/sh
+
+# Hash the source template to avoid unnecessary runs of this script when ignored values change, but load from the destination file after it is written to ensure consistency and avoid issues like includeTemplate passing this script's data instead of the user.ini file's data
+# user.ini.tmpl (dconf user settings template) hash: {{ joinPath .chezmoi.sourceFile ".." "user.ini.tmpl" | include | sha256sum }}
+dconf load / <{{ joinPath .chezmoi.targetFile ".." "user.ini" | quote }}

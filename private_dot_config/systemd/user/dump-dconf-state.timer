@@ -1,0 +1,8 @@
+[Unit]
+Description=Dump dconf state to user.ini hourly
+
+[Timer]
+OnCalendar=hourly
+
+[Install]
+WantedBy=timers.target
