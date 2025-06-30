@@ -123,10 +123,10 @@ function manage_dotfiles() {
                 "m" "${term_green}${term_bold}${term_underline}M${term_nounderline}erge${term_reset}: merge changes made to this file into the source state" "chezmoi merge \"$absolute_path\"" \
                 "f" "${term_yellow}${term_bold}${term_underline}F${term_nounderline}orget${term_reset}: remove this file from the source state and edit .chezmoiignore" "chezmoi forget \"$absolute_path\" && $EDITOR \"$source_path/.chezmoiignore\"" \
                 "d" "${term_yellow}${term_bold}${term_underline}D${term_nounderline}estroy${term_reset}: ${term_red}${term_bold}delete this file${term_reset} and remove it from the source state" "chezmoi destroy \"$absolute_path\"" \
-                "t" "${term_blue}${term_bold}View ${term_underline}t${term_nounderline}arget file${term_reset}: view $absolute_path" "less \"$absolute_path\"" \
                 "s" "${term_blue}${term_bold}View ${term_underline}s${term_nounderline}ource file${term_reset}: view $file_source_path" "less \"$file_source_path\"" \
-                "e" "${term_cyan}${term_bold}${term_underline}E${term_nounderline}dit target file${term_reset}" "$EDITOR \"$absolute_path\"" \
-                "i" "${term_cyan}${term_bold}Ed${term_underline}i${term_nounderline}t source file${term_reset}" "chezmoi edit \"$absolute_path\"" \
+                "t" "${term_blue}${term_bold}View ${term_underline}t${term_nounderline}arget file${term_reset}: view $absolute_path" "less \"$absolute_path\"" \
+                "e" "${term_cyan}${term_bold}${term_underline}E${term_nounderline}dit source file${term_reset}" "chezmoi edit \"$absolute_path\"" \
+                "i" "${term_cyan}${term_bold}Ed${term_underline}i${term_nounderline}t target file${term_reset}" "$EDITOR \"$absolute_path\"" \
                 "?" "${term_blue}${term_bold}${term_underline}?${term_reset}: get file status" "chezmoi status \"$absolute_path\"" \
                 || break
         done
@@ -139,7 +139,11 @@ function manage_dotfiles_repo() {
     while true; do
         interactive_prompt "${term_bold}Git status:${term_reset} $(chezmoi git -- -c color.ui=always status)" "$(chezmoi source-path)" \
             "s" "${term_green}${term_bold}${term_underline}S${term_nounderline}tage all changes${term_reset}" "chezmoi git add ." \
-            "d" "${term_blue}${term_bold}${term_underline}D${term_nounderline}iff staged changes${term_reset}" "chezmoi git diff -- --cached" \
+            "i" "${term_cyan}${term_bold}${term_underline}I${term_nounderline}nteractively stage changes${term_reset}" "chezmoi git add -- --interactive" \
+            "u" "${term_yellow}${term_bold}${term_underline}U${term_nounderline}nstage all changes${term_reset}" "chezmoi git restore -- --staged ." \
+            "n" "${term_cyan}${term_bold}I${term_underline}n${term_nounderline}teractively unstage changes${term_reset}" "chezmoi git restore -- --staged --patch" \
+            "r" "${term_cyan}${term_bold}Interactively ${term_underline}r${term_nounderline}estore files to their state from the previous commit${term_reset}" "chezmoi git restore -- --patch" \
+            "d" "${term_blue}${term_bold}${term_underline}D${term_nounderline}iff staged changes${term_reset}" "chezmoi git diff -- --staged" \
             "c" "${term_green}${term_bold}${term_underline}C${term_nounderline}ommit staged changes${term_reset}" "chezmoi git commit" \
             "p" "${term_green}${term_bold}${term_underline}P${term_nounderline}ush changes${term_reset}" "chezmoi git push"
     done
