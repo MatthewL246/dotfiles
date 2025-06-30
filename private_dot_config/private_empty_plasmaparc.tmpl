@@ -1,9 +1,9 @@
-{{- /* The whole section disappears when not muted, and GlobalMuteDevices seems optional. */ -}}
-{{- /* Proper newline insertion is a little tricky here - the final newline should only be added if there is other content in the file. */ -}}
-{{- with includeTemplate "ini-use-value-or-default" (list $.chezmoi.targetFile ".General | .GlobalMute" "") -}}
+{{- /* Each option disappears if empty (and whole sections disappear if they have no options set). GlobalMuteDevices seems optional when muted. */ -}}
 [General]
+AudioFeedback=false
+{{- with includeTemplate "ini-use-value-or-default" (list $.chezmoi.targetFile ".General | .GlobalMute" "") }}
 GlobalMute={{ . }}
+{{- end -}}
 {{- with includeTemplate "ini-use-value-or-default" (list $.chezmoi.targetFile ".General | .GlobalMuteDevices" "") }}
 GlobalMuteDevices={{ . }}
 {{- end }}
-{{ end -}}

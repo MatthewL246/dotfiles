@@ -69,3 +69,6 @@ AddPackage kdiff3 # 3-way merges
 # G502 X mouse configuration
 AddPackage piper
 CreateLink /etc/systemd/system/dbus-org.freedesktop.ratbag1.service /usr/lib/systemd/system/ratbagd.service
+
+# Monitor ICC profiles
+CopyFile "/etc/icc-profiles/ASUS PB278QV.icm"

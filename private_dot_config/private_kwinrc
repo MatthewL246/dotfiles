@@ -1,19 +1,32 @@
+[Activities][LastVirtualDesktop]
+5c0b8d00-77e5-4aba-8df2-66659b305a84=8e290a87-0788-485e-ab9c-be92ef19a5e3
+
 [Desktops]
 Id_1=8e290a87-0788-485e-ab9c-be92ef19a5e3
 Number=1
 Rows=1
 
+[Effect-windowview]
+BorderActivateAll=1
+
+[ElectricBorders]
+BottomLeft=ApplicationLauncher
+BottomRight=ShowDesktop
+
 [NightColor]
 Active=true
 EveningBeginFixed=2000
 Mode=Times
-NightTemperature=4000
+NightTemperature=3000
+
+[ScreenEdges]
+RemainActiveOnFullscreen=true
+
+[TabBox]
+BorderAlternativeActivate=6
 
 [Tiling]
 padding=4
-
-[Tiling][8e290a87-0788-485e-ab9c-be92ef19a5e3][9a1e5513-af7d-4398-a435-7cc7043aa7ba]
-tiles={"layoutDirection":"horizontal","tiles":[{"width":0.25},{"width":0.5},{"width":0.25}]}
 
 [Tiling][9cbff7de-f726-5600-a811-d195d763978f]
 tiles={"layoutDirection":"horizontal","tiles":[{"width":0.25},{"width":0.5},{"width":0.25}]}

@@ -1,4 +1,13 @@
+[Keyboard]
+NumLock=0
+RepeatDelay=200
+RepeatRate=50
+
 [Libinput][1133][49305][Logitech G502 X]
 PointerAcceleration=0.000
 PointerAccelerationProfile=1
-ScrollMethod=0
+ScrollFactor=0.5
+
+[Libinput][12851][4881][Ducky Ducky One 3 RGB]
+PointerAcceleration=0.000
+PointerAccelerationProfile=1
