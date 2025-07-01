@@ -42,8 +42,9 @@
 /.local/state/
 /.var/
 
-# Accounts SQLite database (TODO: figure out what this is and whether it should be stored)
+# KDE online accounts database
 /.config/libaccounts-glib/
+/.config/signond/
 
 # Firefox data, ignored by default because most of it is personal data
 /.mozilla/firefox/*

@@ -1,0 +1,20 @@
+[%General]
+language=en_US
+recentFileList={{ template "ini-use-value-or-default" (list .chezmoi.targetFile ".\"%General\" | .recentFileList" "") }}
+
+[MainWindow]
+geometry={{ template "ini-use-value-or-default" (list .chezmoi.targetFile ".MainWindow | .geometry" "") }}
+openTabs=structure browser pragmas query
+windowState={{ template "ini-use-value-or-default" (list .chezmoi.targetFile ".MainWindow | .windowState" "") }}
+
+[SQLLogDock]
+Log=Application
+
+[SchemaDock]
+dropEnquotedNames=true
+dropQualifiedNames=false
+dropSelectQuery=true
+
+[editor]
+splitter1_sizes=@Invalid()
+splitter2_sizes=@Invalid()
