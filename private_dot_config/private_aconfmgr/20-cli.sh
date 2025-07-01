@@ -9,6 +9,9 @@ AddPackage vim
 # Safely trash files
 AddPackage trash-cli
 
+# SSH
+AddPackage openssh
+
 # Matt Daemon
 CopyFile /etc/systemd/system/matt.service
 CreateLink /etc/systemd/system/multi-user.target.wants/matt.service /etc/systemd/system/matt.service

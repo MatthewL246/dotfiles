@@ -1,0 +1,5 @@
+{{/* Avoid writing adapter MAC addresses to the config file. */}}
+{{- template "include-regex-from-file" (list .chezmoi.targetFile ".*_powered=.*" "[Adapters]\n" "\n\n") -}}
+
+[Devices]
+connectedDevices=

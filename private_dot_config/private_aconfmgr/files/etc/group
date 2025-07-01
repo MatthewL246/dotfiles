@@ -21,7 +21,7 @@ disk:x:995:
 input:x:994:
 kmem:x:993:
 kvm:x:992:
-lp:x:991:
+lp:x:991:cups
 optical:x:990:
 render:x:989:
 sgx:x:988:
@@ -57,3 +57,4 @@ nvidia-persistenced:x:143:
 i2c:x:967:
 rtkit:x:133:
 sddm:x:966:
+cups:x:209:

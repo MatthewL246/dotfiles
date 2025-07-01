@@ -17,6 +17,12 @@
 :ufw6-user-limit-accept - [0:0]
 ### RULES ###
 
+### tuple ### allow udp 1714:1764 ::/0 any ::/0 KDEConnect - in
+-A ufw6-user-input -p udp -m multiport --dports 1714:1764 -j ACCEPT -m comment --comment 'dapp_KDEConnect'
+
+### tuple ### allow tcp 1714:1764 ::/0 any ::/0 KDEConnect - in
+-A ufw6-user-input -p tcp -m multiport --dports 1714:1764 -j ACCEPT -m comment --comment 'dapp_KDEConnect'
+
 ### END RULES ###
 
 ### LOGGING ###

@@ -33,9 +33,10 @@
 /.local/share/krdpserver/kdrp.key
 
 # Temporary/session-specific data
+/.config/kconf_updaterc
+/.config/print-manager
 /.config/pulse/cookie
 /.config/session/
-/.config/kconf_updaterc
 # TODO: Will (probably) still need to check .local/share for useful data, but the majority of it isn't useful
 /.local/share/
 /.local/state/

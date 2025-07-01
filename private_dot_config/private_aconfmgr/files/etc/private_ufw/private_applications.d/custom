@@ -1,0 +1,4 @@
+[KDEConnect]
+title=KDE Connect
+description=KDE Connect for file sharing between phones and computers
+ports=1714:1764/udp|1714:1764/tcp

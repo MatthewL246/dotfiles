@@ -57,6 +57,8 @@ AddPackage kwalletmanager # KDE Wallet management
 AddPackage noto-fonts-cjk # Chinese, Japanese, and Korean characters for Noto Fonts
 AddPackage noto-fonts-extra # Extra variants of Noto Fonts
 AddPackage xdg-desktop-portal-gtk # Sync some settings from KDE to GTK apps
+AddPackage sshfs # KDE connect phone filesystem browsing
+AddPackage bluez-obex # Bluetooth file sharing
 
 # KDE user settings
 CopyFile /var/lib/AccountsService/icons/matthew
@@ -72,3 +74,22 @@ CreateLink /etc/systemd/system/dbus-org.freedesktop.ratbag1.service /usr/lib/sys
 
 # Monitor ICC profiles
 CopyFile "/etc/icc-profiles/ASUS PB278QV.icm"
+
+
+## Printer setup with CUPS
+
+# Packages
+AddPackage cups
+AddPackage system-config-printer
+
+# CUPS configuration
+CopyFile /etc/cups/classes.conf 600
+CopyFile /etc/cups/ppd/ET-2850.ppd 640 '' cups
+CopyFile /etc/cups/ppd/HL-L2350DW.ppd 640 '' cups
+CopyFile /etc/cups/printers.conf 600
+
+# CUPS daemon
+CreateLink /etc/systemd/system/multi-user.target.wants/cups.path /usr/lib/systemd/system/cups.path
+CreateLink /etc/systemd/system/multi-user.target.wants/cups.service /usr/lib/systemd/system/cups.service
+CreateLink /etc/systemd/system/printer.target.wants/cups.service /usr/lib/systemd/system/cups.service
+CreateLink /etc/systemd/system/sockets.target.wants/cups.socket /usr/lib/systemd/system/cups.socket

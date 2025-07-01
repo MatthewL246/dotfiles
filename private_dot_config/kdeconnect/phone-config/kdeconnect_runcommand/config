@@ -1,0 +1,2 @@
+[General]
+commands="@ByteArray({\"8d621b07_1106_404f_8d4e_2d905edb124a\":{\"command\":\"loginctl lock-session\",\"name\":\"Lock Screen\"},\"5fbc13d6_3b9e_4370_99ba_4f446a592a04\":{\"command\":\"systemctl suspend\",\"name\":\"Suspend\"},\"772cd7b0_2954_4aa7_8420_d2d537e72510\":{\"command\":\"systemctl hibernate\",\"name\":\"Hibernate\"},\"7a90ee17_2955_41bf_b460_2ec4cada3748\":{\"command\":\"systemctl poweroff\",\"name\":\"Shut down\"},\"92bd0434_3bbc_4d23_8c3a_03f79dd46780\":{\"command\":\"systemctl reboot\",\"name\":\"Reboot\"}})"
