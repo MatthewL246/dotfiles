@@ -10,3 +10,6 @@ CreateLink /etc/systemd/system/dbus-org.freedesktop.ratbag1.service /usr/lib/sys
 
 # SQLite database browser
 AddPackage sqlitebrowser
+
+# GSettings/dconf settings editor
+AddPackage dconf-editor
