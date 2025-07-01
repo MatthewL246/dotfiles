@@ -64,6 +64,11 @@ AddPackage bluez-obex # Bluetooth file sharing
 CopyFile /var/lib/AccountsService/icons/matthew
 CopyFile /var/lib/AccountsService/users/matthew
 
+# KDE SDDM settings
+CreateFile /etc/sddm.conf > /dev/null
+CopyFile /etc/sddm.conf.d/kde_settings.conf
+CopyFile /usr/share/sddm/themes/breeze/theme.conf.user
+
 # Monitor ICC profiles
 CopyFile "/etc/icc-profiles/ASUS PB278QV.icm"
 
