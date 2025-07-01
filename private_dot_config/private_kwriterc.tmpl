@@ -7,8 +7,5 @@ Show Status Bar=true
 Show Tab Bar=true
 Show Url Nav Bar=false
 
-[MainWindow]
-{{/* See katerc file */}}
-{{- if stat .chezmoi.targetFile -}}
-    {{- regexFindAll ".* screen: (Height|Width)=.*" (include .chezmoi.targetFile) -1 | join "\n" -}}
-{{- end }}
+{{- /* See katerc file */ -}}
+{{- template "include-regex-from-file" (list .chezmoi.targetFile ".* screen: (Height|Width)=.*" "\n\n[MainWindow]\n" "") }}

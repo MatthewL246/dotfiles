@@ -71,11 +71,8 @@ Word Completion=true
 Word Completion Minimal Word Length=3
 Word Completion Remove Tail=true
 
-[MainWindow]
-{{/* Hack because Kate uses colons in its INI keys, so Chezmoi can't parse them correctly */}}
-{{- if stat .chezmoi.targetFile -}}
-    {{- regexFindAll ".* screen: (Height|Width)=.*" (include .chezmoi.targetFile) -1 | join "\n" -}}
-{{- end }}
+{{/* Hack because Kate uses colons in its INI keys, so Chezmoi can't parse them correctly */ -}}
+{{- template "include-regex-from-file" (list .chezmoi.targetFile ".* screen: (Height|Width)=.*" "[MainWindow]\n" "\n\n") -}}
 
 [filetree]
 editShade=183,220,246

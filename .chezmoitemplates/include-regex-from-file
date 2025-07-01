@@ -1,0 +1,14 @@
+{{- /* Usage: {{ template "include-regex-from-file" (list .chezmoi.targetFile "regex" "insert before matches if found" "insert after matches if found") }} */ -}}
+
+{{- $targetFile := index . 0 -}}
+{{- $regex := index . 1 -}}
+{{- $beforeText := index . 2 -}}
+{{- $afterText := index . 3 -}}
+
+{{- if stat $targetFile -}}
+    {{- with regexFindAll $regex (include $targetFile) -1 | join "\n" -}}
+        {{- $beforeText -}}
+        {{- . -}}
+        {{- $afterText -}}
+    {{- end -}}
+{{- end -}}
