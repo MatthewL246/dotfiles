@@ -14,10 +14,18 @@ immutability=1
 lastScreen=0
 location=0
 plugin=org.kde.plasma.folder
-wallpaperplugin=org.kde.image
+wallpaperplugin=org.kde.potd
 
 [Containments][1][General]
 positions={"2560x1440":[]}
+
+[Containments][1][Wallpaper][org.kde.image][General]
+Image=/usr/share/wallpapers/ScarletTree/
+SlidePaths=/usr/share/wallpapers/
+
+[Containments][1][Wallpaper][org.kde.potd][General]
+FillMode=2
+Provider=bing
 
 [Containments][2]
 activityId=
@@ -47,8 +55,8 @@ plugin=org.kde.plasma.kickoff
 
 [Containments][2][Applets][3][Configuration]
 PreloadWeight={{ template "ini-use-value-or-default" (list .chezmoi.targetFile ".\"Containments][2][Applets][3][Configuration\" | .PreloadWeight" 50)}}
-popupHeight=508
-popupWidth=647
+popupHeight=520
+popupWidth=661
 
 [Containments][2][Applets][3][Configuration][General]
 favoritesPortedToKAstats=true
@@ -75,8 +83,8 @@ immutability=1
 lastScreen=-1
 location=0
 plugin=org.kde.plasma.systemtray
-popupHeight=432
-popupWidth=432
+popupHeight=438
+popupWidth=438
 wallpaperplugin=org.kde.image
 
 [Containments][2][Applets][7][Applets][10]
