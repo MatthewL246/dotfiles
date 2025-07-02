@@ -1,3 +1,11 @@
+[ca/desrt/dconf-editor]
+saved-pathbar-path='{{ template "ini-use-value-or-default" (list .chezmoi.targetFile ".\"ca/desrt/dconf-editor\" | .\"saved-pathbar-path\"" "/") }}'
+saved-view='{{ template "ini-use-value-or-default" (list .chezmoi.targetFile ".\"ca/desrt/dconf-editor\" | .\"saved-view\"" "/") }}'
+show-warning=false
+window-height={{ template "ini-use-value-or-default" (list .chezmoi.targetFile ".\"ca/desrt/dconf-editor\" | .\"window-height\"" 500) }}
+window-is-maximized={{ template "ini-use-value-or-default" (list .chezmoi.targetFile ".\"ca/desrt/dconf-editor\" | .\"window-is-maximized\"" "false") }}
+window-width={{ template "ini-use-value-or-default" (list .chezmoi.targetFile ".\"ca/desrt/dconf-editor\" | .\"window-width\"" 540) }}
+
 [org/gnome/desktop/a11y/applications]
 screen-reader-enabled=false
 
@@ -16,6 +24,7 @@ text-scaling-factor=1.0
 toolbar-style='text'
 
 [org/gnome/desktop/sound]
+event-sounds=false
 theme-name='ocean'
 
 [org/gnome/desktop/wm/preferences]

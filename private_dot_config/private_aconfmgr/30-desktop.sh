@@ -69,6 +69,36 @@ CreateFile /etc/sddm.conf > /dev/null
 CopyFile /etc/sddm.conf.d/kde_settings.conf
 CopyFile /usr/share/sddm/themes/breeze/theme.conf.user
 
+# SDDM's "home" directory
+# Originally set up by KDE Settings > Colors & Themes > Login Screen (SDDM) > Apply Plasma Settings...
+CopyFile /var/lib/sddm/.config/fontconfig/fonts.conf "" sddm sddm
+CopyFile /var/lib/sddm/.config/kcminputrc 600 sddm sddm
+CopyFile /var/lib/sddm/.config/kdeglobals 600 sddm sddm
+CopyFile /var/lib/sddm/.config/kwinoutputconfig.json "" sddm sddm
+CopyFile /var/lib/sddm/.config/plasmarc 600 sddm sddm
+CopyFile /var/lib/sddm/.config/user-dirs.dirs 600 sddm sddm
+CopyFile /var/lib/sddm/.config/user-dirs.locale "" sddm sddm
+CopyFile /var/lib/sddm/state.conf
+
+CreateDir /var/lib/sddm/.config/qtvirtualkeyboard "" sddm sddm
+CreateDir /var/lib/sddm/Desktop "" sddm sddm
+CreateDir /var/lib/sddm/Documents "" sddm sddm
+CreateDir /var/lib/sddm/Downloads "" sddm sddm
+CreateDir /var/lib/sddm/Music "" sddm sddm
+CreateDir /var/lib/sddm/Pictures "" sddm sddm
+CreateDir /var/lib/sddm/Public "" sddm sddm
+CreateDir /var/lib/sddm/Templates "" sddm sddm
+CreateDir /var/lib/sddm/Videos "" sddm sddm
+
+SetFileProperty /var/lib/sddm/.config/fontconfig group sddm
+SetFileProperty /var/lib/sddm/.config/fontconfig owner sddm
+SetFileProperty /var/lib/sddm/.config group sddm
+SetFileProperty /var/lib/sddm/.config mode 700
+SetFileProperty /var/lib/sddm/.config owner sddm
+SetFileProperty /var/lib/sddm group sddm
+SetFileProperty /var/lib/sddm mode 750
+SetFileProperty /var/lib/sddm owner sddm
+
 # Monitor ICC profiles
 CopyFile "/etc/icc-profiles/ASUS PB278QV.icm"
 
@@ -81,8 +111,8 @@ AddPackage system-config-printer
 
 # CUPS configuration
 CopyFile /etc/cups/classes.conf 600
-CopyFile /etc/cups/ppd/ET-2850.ppd 640 '' cups
-CopyFile /etc/cups/ppd/HL-L2350DW.ppd 640 '' cups
+CopyFile /etc/cups/ppd/ET-2850.ppd 640 "" cups
+CopyFile /etc/cups/ppd/HL-L2350DW.ppd 640 "" cups
 CopyFile /etc/cups/printers.conf 600
 
 # CUPS daemon

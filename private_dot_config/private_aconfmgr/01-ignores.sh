@@ -104,10 +104,12 @@ IgnorePath "/var/lib/plocate/plocate.db"
 IgnorePath "/var/lib/plymouth/boot-duration"
 IgnorePath "/var/lib/portables/*"
 IgnorePath "/var/lib/private/*"
-IgnorePath "/var/lib/sddm/*"
 IgnorePath "/var/lib/systemd/*"
 IgnorePath "/var/lib/tpm2-tss/*"
 IgnorePath "/var/lib/upower/*"
+
+# SDDM's "home" directory
+IgnorePath "/var/lib/sddm/.cache/*"
 
 # Annoying empty directories
 IgnorePath "/var/lib/lastlog"

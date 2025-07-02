@@ -134,6 +134,9 @@ ForegroundVisited=155,89,182
 
 [General]
 ColorSchemeHash=0594cdbf8684a5ef175629572f86003b65badc3d
+XftAntialias=true
+XftHintStyle=hintfull
+XftSubPixel=rgb
 
 [KFileDialog Settings]
 Allow Expansion=false
@@ -154,6 +157,9 @@ Sort hidden files last=false
 Sort reversed=false
 Speedbar Width=140
 View Style=DetailTree
+
+[Sounds]
+Enable=false
 
 [WM]
 activeBackground=227,229,231
