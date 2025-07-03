@@ -1,0 +1,16 @@
+[activities]
+5c0b8d00-77e5-4aba-8df2-66659b305a84=Default
+d43a201c-13c8-449c-a43c-9a983a0b0677=Private
+
+[activities-descriptions]
+5c0b8d00-77e5-4aba-8df2-66659b305a84=Default activity
+d43a201c-13c8-449c-a43c-9a983a0b0677=Doesn't track recent files and app activity
+
+[activities-icons]
+5c0b8d00-77e5-4aba-8df2-66659b305a84=activities
+d43a201c-13c8-449c-a43c-9a983a0b0677=view-private
+
+[main]
+currentActivity={{ template "ini-use-value-or-default" (list .chezmoi.targetFile ".main | .currentActivity" "5c0b8d00-77e5-4aba-8df2-66659b305a84") }}
+runningActivities={{ template "ini-use-value-or-default" (list .chezmoi.targetFile ".main | .runningActivities" "5c0b8d00-77e5-4aba-8df2-66659b305a84") }}
+stoppedActivities={{ template "ini-use-value-or-default" (list .chezmoi.targetFile ".main | .stoppedActivities" "d43a201c-13c8-449c-a43c-9a983a0b0677") }}

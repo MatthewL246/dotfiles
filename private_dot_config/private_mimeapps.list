@@ -1,0 +1,15 @@
+[Added Associations]
+application/json=org.kde.kwrite.desktop;org.kde.kate.desktop;
+application/x-docbook+xml=org.kde.kwrite.desktop;org.kde.kate.desktop;
+application/x-yaml=org.kde.kwrite.desktop;org.kde.kate.desktop;
+text/markdown=org.kde.kwrite.desktop;org.kde.kate.desktop;
+text/plain=org.kde.kwrite.desktop;org.kde.kate.desktop;
+text/x-cmake=org.kde.kwrite.desktop;org.kde.kate.desktop;
+
+[Default Applications]
+application/json=org.kde.kwrite.desktop;
+application/x-docbook+xml=org.kde.kwrite.desktop;
+application/x-yaml=org.kde.kwrite.desktop;
+text/markdown=org.kde.kwrite.desktop;
+text/plain=org.kde.kwrite.desktop;
+text/x-cmake=org.kde.kwrite.desktop;

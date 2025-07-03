@@ -6,12 +6,41 @@ Id_1=8e290a87-0788-485e-ab9c-be92ef19a5e3
 Number=1
 Rows=1
 
+[Effect-blur]
+BlurStrength=8
+
+[Effect-mouseclick]
+LineWidth=2
+RingCount=1
+
+[Effect-thumbnailaside]
+MaxWidth=400
+Opacity=60
+
+[Effect-trackmouse]
+Alt=true
+
+[Effect-translucency]
+ComboboxPopups=80
+Dialogs=80
+Menus=80
+MoveResize=80
+
 [Effect-windowview]
 BorderActivateAll=1
+
+[Effect-zoom]
+MousePointer=1
 
 [ElectricBorders]
 BottomLeft=ApplicationLauncher
 BottomRight=ShowDesktop
+
+[MouseBindings]
+CommandActiveTitlebar2=Toggle raise and lower
+CommandAllWheel=Change Opacity
+CommandInactiveTitlebar2=Activate
+CommandTitlebarWheel=Previous/Next Desktop
 
 [NightColor]
 Active=true
@@ -19,11 +48,31 @@ EveningBeginFixed=2000
 Mode=Times
 NightTemperature=3000
 
+[Plugins]
+blurEnabled=true
+contrastEnabled=true
+cubeEnabled=true
+invertEnabled=true
+mouseclickEnabled=true
+thumbnailasideEnabled=true
+trackmouseEnabled=true
+translucencyEnabled=true
+
 [ScreenEdges]
 RemainActiveOnFullscreen=true
 
+[SubSession: d43a201c-13c8-449c-a43c-9a983a0b0677]
+active=-1
+count=0
+
 [TabBox]
 BorderAlternativeActivate=6
+
+[TabBoxAlternative]
+LayoutName=sidebar
+OrderMinimizedMode=1
+ShowDesktopMode=1
+SwitchingMode=1
 
 [Tiling]
 padding=4
@@ -33,6 +82,10 @@ tiles={"layoutDirection":"horizontal","tiles":[{"width":0.25},{"width":0.5},{"wi
 
 [Tiling][9cbff7de-f726-5600-a811-d195d763978f]
 tiles={"layoutDirection":"horizontal","tiles":[{"width":0.25},{"width":0.5},{"width":0.25}]}
+
+[Windows]
+CenterSnapZone=20
+FocusStealingPreventionLevel=2
 
 [Xwayland]
 Scale=1

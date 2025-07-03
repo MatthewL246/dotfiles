@@ -1,2 +1,11 @@
+[Applications][@other]
+ShowInHistory=true
+
 [Applications][firefox]
 Seen=true
+
+[Applications][vlc]
+ShowInHistory=true
+
+[Notifications]
+LowPriorityHistory=true

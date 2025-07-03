@@ -1,0 +1,14 @@
+[Event/deviceAdded]
+Action=Popup|Sound
+
+[Event/deviceRemoved]
+Action=Popup|Sound
+
+[Event/exitkde]
+Action=Popup
+
+[Event/messageCritical]
+Action=Popup|Sound|Taskbar
+
+[Event/plasmoidDeleted]
+Action=
