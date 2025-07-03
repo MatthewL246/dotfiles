@@ -120,3 +120,9 @@ CreateLink /etc/systemd/system/multi-user.target.wants/cups.path /usr/lib/system
 CreateLink /etc/systemd/system/multi-user.target.wants/cups.service /usr/lib/systemd/system/cups.service
 CreateLink /etc/systemd/system/printer.target.wants/cups.service /usr/lib/systemd/system/cups.service
 CreateLink /etc/systemd/system/sockets.target.wants/cups.socket /usr/lib/systemd/system/cups.socket
+
+
+## Spell checking for KDE applications
+
+AddPackage aspell
+AddPackage aspell-en
