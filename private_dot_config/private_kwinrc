@@ -22,7 +22,6 @@ Alt=true
 
 [Effect-translucency]
 ComboboxPopups=80
-Dialogs=80
 Menus=80
 MoveResize=80
 
