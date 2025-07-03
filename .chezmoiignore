@@ -2,7 +2,7 @@
 /.config/chezmoi/
 /.local/share/chezmoi/
 
-# Personal files
+# Personal files (default directories)
 /Desktop/
 /Documents/
 /Downloads/
@@ -12,6 +12,10 @@
 /Templates/
 /Videos/
 /.local/share/Trash/
+
+# Personal files (non-default directories)
+/temp/*
+!/temp/.directory
 
 # Temporary files
 /.cache/

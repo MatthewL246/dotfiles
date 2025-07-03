@@ -83,6 +83,9 @@ tiles={"layoutDirection":"horizontal","tiles":[{"width":0.25},{"width":0.5},{"wi
 [Tiling][9cbff7de-f726-5600-a811-d195d763978f]
 tiles={"layoutDirection":"horizontal","tiles":[{"width":0.25},{"width":0.5},{"width":0.25}]}
 
+[Wayland]
+EnablePrimarySelection=false
+
 [Windows]
 CenterSnapZone=20
 FocusStealingPreventionLevel=2
