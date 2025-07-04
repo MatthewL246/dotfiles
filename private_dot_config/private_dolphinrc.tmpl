@@ -1,14 +1,48 @@
+[CompactMode]
+PreviewSize=16
+
+[ContextMenu]
+ShowCopyMoveMenu=true
+
 [DetailsMode]
+IconSize=32
+LeftPadding=0
 PreviewSize=32
+RightPadding=0
+
+[FoldersPanel]
+HiddenFilesShown=true
 
 [General]
+AutoExpandFolders=true
+BrowseThroughArchives=true
+ConfirmClosingMultipleTabs=false
+DoubleClickViewAction=create_dir
+OpenExternallyCalledFolderInNewTab=true
+OpenNewTabAfterLastTab=true
 RememberOpenedTabs=false
+ShowFullPath=true
+ShowStatusBar=FullWidth
+ShowZoomSlider=true
+UseTabForSwitchingSplitView=true
 Version=202
 ViewPropsTimestamp={{ template "ini-use-value-or-default" (list .chezmoi.targetFile ".General | .ViewPropsTimestamp" (now | date "2006,1,2,15,4,5.000")) }}
+
+[IconsMode]
+IconSize=64
 
 [KFileDialog Settings]
 Places Icons Auto-resize=false
 Places Icons Static Size=22
 
-[MainWindow]
-MenuBar=Disabled
+[Notification Messages]
+warnAboutRisksBeforeActingAsAdmin=false
+
+[PreviewSettings]
+Plugins=appimagethumbnail,audiothumbnail,blenderthumbnail,comicbookthumbnail,cursorthumbnail,djvuthumbnail,ebookthumbnail,exrthumbnail,directorythumbnail,fontthumbnail,imagethumbnail,jpegthumbnail,kraorathumbnail,windowsexethumbnail,windowsimagethumbnail,mobithumbnail,opendocumentthumbnail,gsthumbnail,rawthumbnail,svgthumbnail,textthumbnail,ffmpegthumbs,gdk-pixbuf-thumbnailer
+
+[VersionControl]
+enabledPlugins=Git
+
+{{- /* See katerc file */ -}}
+{{- template "include-regex-from-file" (list .chezmoi.targetFile ".* screen: (Height|Width)=.*" "\n\n[ViewPropertiesDialog]\n" "") }}

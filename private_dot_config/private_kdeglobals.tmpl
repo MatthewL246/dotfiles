@@ -132,6 +132,11 @@ ForegroundNormal=35,38,41
 ForegroundPositive=39,174,96
 ForegroundVisited=155,89,182
 
+[DirSelect Dialog]
+DirSelectDialog Size={{ template "ini-use-value-or-default" (list .chezmoi.targetFile ".\"DirSelect Dialog\" | .\"DirSelectDialog Size\"" "800,500") }}
+History Items[$e]={{ template "ini-use-value-or-default" (list .chezmoi.targetFile ".\"DirSelect Dialog\" | .\"History Items[$e]\"" "") }}
+Splitter State={{ template "ini-use-value-or-default" (list .chezmoi.targetFile ".\"DirSelect Dialog\" | .\"Splitter State\"" "") }}
+
 [General]
 AccentColor=255,0,0
 ColorScheme=BreezeLight
@@ -141,25 +146,33 @@ XftAntialias=true
 XftHintStyle=hintfull
 XftSubPixel=rgb
 
+[KDE]
+ShowDeleteCommand=true
+
 [KFileDialog Settings]
-Allow Expansion=false
+Allow Expansion=true
 Automatically select filename extension=true
 Breadcrumb Navigation=false
 Decoration position=2
 LocationCombo Completionmode=5
 PathCombo Completionmode=5
+Preview Width={{ template "ini-use-value-or-default" (list .chezmoi.targetFile ".\"KFileDialog Settings\" | .\"Preview Width\"" 300) }}
 Show Bookmarks=false
 Show Full Path=false
 Show Inline Previews=true
-Show Preview=false
+Show Preview=true
 Show Speedbar=true
 Show hidden files=true
 Sort by=Name
 Sort directories first=true
 Sort hidden files last=false
 Sort reversed=false
-Speedbar Width=140
+Speedbar Width={{ template "ini-use-value-or-default" (list .chezmoi.targetFile ".\"KFileDialog Settings\" | .\"Speedbar Width\"" 180) }}
 View Style=DetailTree
+
+[PreviewSettings]
+EnableRemoteFolderThumbnail=false
+MaximumRemoteSize=2097152
 
 [Sounds]
 Enable=false

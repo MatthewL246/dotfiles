@@ -28,3 +28,5 @@ dataSourceCommonSettings\activeState=true
 [UserFeedback]
 ApplicationStartCount={{ template "ini-use-value-or-default" (list .chezmoi.targetFile ".UserFeedback | .ApplicationStartCount" 0) }}
 ApplicationTime={{ template "ini-use-value-or-default" (list .chezmoi.targetFile ".UserFeedback | .ApplicationTime" 0) }}
+StatisticsCollectionMode=DetailedUsageStatistics
+SurveyInterval=0

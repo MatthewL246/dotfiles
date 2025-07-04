@@ -2,4 +2,7 @@
 history={{ template "ini-use-value-or-default" (list .chezmoi.targetFile ".FileDialog | .history" "@Invalid()") }}
 lastVisited={{ template "ini-use-value-or-default" (list .chezmoi.targetFile ".FileDialog | .lastVisited" (dict "scheme" "file" "path" (print .chezmoi.homeDir "/") | urlJoin)) }}
 qtVersion=6.9.1
+shortcuts=file:, file:///home/matthew, file:///home/matthew/.config
+sidebarWidth={{ template "ini-use-value-or-default" (list .chezmoi.targetFile ".FileDialog | .sidebarWidth" 120) }}
+treeViewHeader={{ template "ini-use-value-or-default" (list .chezmoi.targetFile ".FileDialog | .treeViewHeader" "") }}
 viewMode=Detail
