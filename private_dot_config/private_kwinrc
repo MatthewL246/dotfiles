@@ -8,6 +8,7 @@ Rows=1
 
 [Effect-blur]
 BlurStrength=8
+NoiseStrength=7
 
 [Effect-mouseclick]
 LineWidth=2
