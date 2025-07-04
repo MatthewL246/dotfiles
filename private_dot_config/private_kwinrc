@@ -22,8 +22,8 @@ Opacity=60
 Alt=true
 
 [Effect-translucency]
-ComboboxPopups=80
-Menus=80
+ComboboxPopups=90
+Menus=90
 MoveResize=80
 
 [Effect-windowview]
