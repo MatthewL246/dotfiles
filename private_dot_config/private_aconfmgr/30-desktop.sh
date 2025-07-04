@@ -62,7 +62,7 @@ AddPackage bluez-obex # Bluetooth file sharing
 
 # KDE user settings
 CopyFile /var/lib/AccountsService/icons/matthew
-CopyFile /var/lib/AccountsService/users/matthew
+CopyFile /var/lib/AccountsService/users/matthew 600
 
 # KDE SDDM settings
 CreateFile /etc/sddm.conf > /dev/null
