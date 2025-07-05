@@ -63,6 +63,10 @@ CopyFile /etc/systemd/system/pkgstats.timer.d/allow-enabling.conf
 CreateLink /etc/systemd/system/timers.target.wants/pkgstats.timer /usr/lib/systemd/system/pkgstats.timer
 
 
+## USB utilities
+AddPackage usbutils
+
+
 ## Locate for finding files
 AddPackage plocate
 
