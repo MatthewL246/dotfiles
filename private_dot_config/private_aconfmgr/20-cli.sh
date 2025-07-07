@@ -37,3 +37,6 @@ done
 
 # See /usr/lib/aconfmgr/common.bash, search for "sudo find /"
 echo "\$-regextype posix-extended -not \\( \\( $quoted_lostfiles_ignore_args\\) -prune \\) -print" >>"$lostfiles_conf"
+
+# CTags: used by several Kate plugins for code navigation
+AddPackage ctags
