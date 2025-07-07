@@ -121,7 +121,8 @@ function manage_dotfiles() {
                 "y" "${term_red}${term_bold}Appl${term_underline}y${term_reset}: overwrite all changes in this file with the target state" "chezmoi apply \"$absolute_path\"" \
                 "a" "${term_green}${term_bold}${term_underline}A${term_nounderline}dd${term_reset}: directly add this file to the source state" "chezmoi add \"$absolute_path\"" \
                 "m" "${term_green}${term_bold}${term_underline}M${term_nounderline}erge${term_reset}: merge changes made to this file into the source state" "chezmoi merge \"$absolute_path\"" \
-                "f" "${term_yellow}${term_bold}${term_underline}F${term_nounderline}orget${term_reset}: remove this file from the source state and edit .chezmoiignore" "chezmoi forget \"$absolute_path\" && $EDITOR \"$source_path/.chezmoiignore\"" \
+                "f" "${term_yellow}${term_bold}${term_underline}F${term_nounderline}orget${term_reset}: remove this file from the source state" "chezmoi forget \"$absolute_path\"" \
+                "g" "${term_yellow}${term_bold}For${term_underline}g${term_nounderline}et and ignore${term_reset}: remove this file from the source state and edit .chezmoiignore" "chezmoi forget \"$absolute_path\" && $EDITOR \"$source_path/.chezmoiignore\"" \
                 "d" "${term_yellow}${term_bold}${term_underline}D${term_nounderline}estroy${term_reset}: ${term_red}${term_bold}delete this file${term_reset} and remove it from the source state" "chezmoi destroy \"$absolute_path\"" \
                 "s" "${term_blue}${term_bold}View ${term_underline}s${term_nounderline}ource file${term_reset}: view $file_source_path" "less \"$file_source_path\"" \
                 "t" "${term_blue}${term_bold}View ${term_underline}t${term_nounderline}arget file${term_reset}: view $absolute_path" "less \"$absolute_path\"" \
