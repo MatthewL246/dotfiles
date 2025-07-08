@@ -1,3 +1,12 @@
+[ActionsWidget]
+ColumnState={{ template "ini-use-value-or-default" (list .chezmoi.targetFile ".ActionsWidget | .ColumnState" "") }}
+
+{{/* Hack because this uses colons in its INI keys, so Chezmoi can't parse them correctly */ -}}
+{{- template "include-regex-from-file" (list .chezmoi.targetFile ".* screen: (Height|Width)=.*" "[ConfigDialog]\n" "\n\n") -}}
+
+[General]
+Number of Actions=0
+
 [PlasmaViews][Panel 2]
 floating=1
 

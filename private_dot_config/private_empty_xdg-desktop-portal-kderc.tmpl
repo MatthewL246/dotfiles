@@ -1,0 +1,2 @@
+{{- /* Hack because this uses colons in its INI keys, so Chezmoi can't parse them correctly */ -}}
+{{- template "include-regex-from-file" (list .chezmoi.targetFile ".* screen: (Height|Width)=.*" "[FileDialogSize]\n" "\n") -}}
