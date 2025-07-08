@@ -1,7 +1,11 @@
 [ca/desrt/dconf-editor]
+restore-view=false
 saved-pathbar-path='{{ template "ini-use-value-or-default" (list .chezmoi.targetFile ".\"ca/desrt/dconf-editor\" | .\"saved-pathbar-path\"" "/") }}'
 saved-view='{{ template "ini-use-value-or-default" (list .chezmoi.targetFile ".\"ca/desrt/dconf-editor\" | .\"saved-view\"" "/") }}'
 show-warning=false
+small-bookmarks-rows=true
+small-keys-list-rows=true
+use-shortpaths=true
 window-height={{ template "ini-use-value-or-default" (list .chezmoi.targetFile ".\"ca/desrt/dconf-editor\" | .\"window-height\"" 500) }}
 window-is-maximized={{ template "ini-use-value-or-default" (list .chezmoi.targetFile ".\"ca/desrt/dconf-editor\" | .\"window-is-maximized\"" "false") }}
 window-width={{ template "ini-use-value-or-default" (list .chezmoi.targetFile ".\"ca/desrt/dconf-editor\" | .\"window-width\"" 540) }}
@@ -10,12 +14,15 @@ window-width={{ template "ini-use-value-or-default" (list .chezmoi.targetFile ".
 screen-reader-enabled=false
 
 [org/gnome/desktop/interface]
+accent-color='red'
 color-scheme='default'
 cursor-blink=true
 cursor-blink-time=1000
 cursor-size=24
 cursor-theme='breeze_cursors'
 enable-animations=true
+font-antialiasing='rgba'
+font-hinting='full'
 font-name='Noto Sans,  10'
 gtk-theme='Breeze'
 icon-theme='breeze'
@@ -31,15 +38,17 @@ theme-name='ocean'
 button-layout='icon:minimize,maximize,close'
 
 [org/gtk/settings/file-chooser]
-date-format='regular'
+clock-format='12h'
+date-format='with-time'
 location-mode='path-bar'
 show-hidden=true
 show-size-column=true
 show-type-column=true
 sidebar-width={{ template "ini-use-value-or-default" (list .chezmoi.targetFile ".\"org/gtk/settings/file-chooser\" | .\"sidebar-width\"" 160) }}
 sort-column='name'
-sort-directories-first=false
+sort-directories-first=true
 sort-order='ascending'
+startup-mode='cwd'
 type-format='category'
 window-position={{ template "ini-use-value-or-default" (list .chezmoi.targetFile ".\"org/gtk/settings/file-chooser\" | .\"window-position\"" 0) }}
 window-size={{ template "ini-use-value-or-default" (list .chezmoi.targetFile ".\"org/gtk/settings/file-chooser\" | .\"window-size\"" 0) }}
