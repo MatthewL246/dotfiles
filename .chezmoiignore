@@ -42,7 +42,8 @@
 /.config/pulse/cookie
 /.config/session/
 # TODO: Will (probably) still need to check .local/share for useful data, but the majority of it isn't useful
-/.local/share/
+/.local/share/*
+!/.local/share/konsole
 /.local/state/
 /.var/
 

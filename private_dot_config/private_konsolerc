@@ -1,5 +1,22 @@
+[Desktop Entry]
+DefaultProfile=Bash.profile
+
 [General]
 ConfigVersion=1
+
+[KonsoleWindow]
+RememberWindowSize=false
+ShowWindowTitleOnTitleBar=true
+
+[MainWindow]
+MenuBar=Enabled
+
+[TabBar]
+CloseTabOnMiddleMouseButton=true
+NewTabButton=true
+
+[ThumbnailsSettings]
+ThumbnailCtrl=true
 
 [UiSettings]
 ColorScheme=
