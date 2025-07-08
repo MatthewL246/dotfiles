@@ -59,7 +59,7 @@
 /.local/share/libkunitconversion/currency.xml
 
 ## Logs
-/.local/share/wayland-session.log
+/.local/share/sddm/wayland-session.log
 
 ## Secrets that can be regenerated or restored from a backup
 /.config/kdeconnect/certificate.pem

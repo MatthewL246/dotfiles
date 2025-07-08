@@ -1,0 +1,16 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<!DOCTYPE gui SYSTEM 'kpartgui.dtd'>
+<gui library="libkeyboardmacrosplugin" name="keyboardmacrosplugin" translationDomain="katekeyboardmacros" version="2">
+ <MenuBar>
+  <Menu name="tools">
+   <text>&amp;Tools</text>
+   <Separator/>
+   <Action name="keyboardmacros"/>
+  </Menu>
+ </MenuBar>
+ <ToolBar name="keyboardmacros">
+  <text>Keyboard Macros</text>
+ </ToolBar>
+ <ActionProperties scheme="Default"/>
+</gui>
+<!-- kate: space-indent on; indent-width 4; replace-tabs on; -->
