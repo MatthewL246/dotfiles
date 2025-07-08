@@ -1,0 +1,41 @@
+[Diff Options]
+CompareRecursively=true
+ConvertTabsToSpaces=false
+CreateSmallerDiff=true
+DiffProgram=
+Format=4
+IgnoreAllWhiteSpace=false
+IgnoreChangesDueToTabExpansion=false
+IgnoreChangesInCase=false
+IgnoreEmptyLines=false
+IgnoreRegExp=false
+IgnoreRegExpText=
+IgnoreRegExpTextHistory=
+IgnoreWhiteSpace=false
+LargeFiles=true
+LinesOfContext=3
+NewFiles=true
+ShowCFunctionChange=false
+
+[Exclude File Options]
+File=false
+FileHistoryList=
+FileURL=
+Pattern=false
+PatternList=
+
+[Recent Compare Files]
+Encoding=Default
+LastChosenDestinationListEntry={{ template "ini-use-value-or-default" (list .chezmoi.targetFile ".\"Recent Compare Files\" | .LastChosenDestinationListEntry" "") }}
+LastChosenSourceListEntry={{ template "ini-use-value-or-default" (list .chezmoi.targetFile ".\"Recent Compare Files\" | .LastChosenSourceListEntry" "") }}
+Recent Destinations={{ template "ini-use-value-or-default" (list .chezmoi.targetFile ".\"Recent Compare Files\" | .\"Recent Destinations\"" "") }}
+Recent Sources={{ template "ini-use-value-or-default" (list .chezmoi.targetFile ".\"Recent Compare Files\" | .\"Recent Sources\"" "") }}
+
+[View Options]
+AddColor=190,190,237
+AppliedColor=237,237,190
+ChangeColor=237,190,190
+RemoveColor=190,237,190
+ScrollNoOfLines=1
+TabToNumberOfSpaces=4
+TextFont=Hack,10,-1,5,400,0,0,0,0,0,0,0,0,0,0,1
