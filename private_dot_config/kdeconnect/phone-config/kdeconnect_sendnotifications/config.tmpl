@@ -5,4 +5,4 @@ generalSynchronizeIcons=true
 generalUrgency=1
 
 {{- /* Keeps a log of previous notification sources for enabling and disabling individual sources. */ -}}
-{{- template "include-regex-from-file" (list .chezmoi.targetFile "[0-9]*\\\\value=@Variant\\(.*\\)|size=[0-9]*" "\n\n[applications]\n" "") }}
+{{- template "include-regex-from-file" (list .chezmoi.targetFile "[0-9]*\\\\value=\"?@Variant\\(.*\\)\"?|size=[0-9]*" "\n\n[applications]\n" "") }}
