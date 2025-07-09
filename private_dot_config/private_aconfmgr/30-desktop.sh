@@ -122,6 +122,11 @@ CreateLink /etc/systemd/system/printer.target.wants/cups.service /usr/lib/system
 CreateLink /etc/systemd/system/sockets.target.wants/cups.socket /usr/lib/systemd/system/cups.socket
 
 
+## Scanner setup with SANE
+AddPackage sane-airscan # Driverless scanning support
+AddPackage skanlite # KDE GUI for scanning
+
+
 ## Spell checking for KDE applications
 
 AddPackage aspell
