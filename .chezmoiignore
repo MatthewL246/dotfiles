@@ -57,6 +57,7 @@
 /.cache/
 /.local/share/kate/katectags/
 /.local/share/libkunitconversion/currency.xml
+/.nv/ComputeCache/
 
 ## Logs
 /.local/share/sddm/wayland-session.log
@@ -89,6 +90,7 @@
 
 ## Session-specific data
 /.config/pulse/cookie
+/.pulse-cookie
 
 ## Files that only contain unnecessary program state (like window positions and recently-used data)
 /.config/kconf_updaterc
@@ -116,3 +118,28 @@
 # KDE contacts: contains private information, and this is just a local copy of synced data
 /.local/share/kpeople/persondb
 /.local/share/kpeoplevcard/kdeconnect-*
+
+
+# Files managed by Steam
+/.local/share/Steam/
+/.local/share/vulkan/implicit_layer.d/steam*.json
+/.steam/
+/.steampath
+/.steampid
+# Note: Steam config files (see https://gist.github.com/mgora/bd2ece3ba2c041e8061c912475194bfd) are very convoluted and contain lots of unnecessary data. Tracking them here would require some very custom scripting.
+# TODO: Write down Steam settings in just English or screenshots
+
+# Icons for Steam games
+/.local/share/icons/**/steam_icon_*.png
+
+# Menu entries for Steam games
+{{ range glob (joinPath .chezmoi.homeDir ".local" "share" "applications" "*.desktop") -}}
+    {{- if include . | regexMatch "\nComment=Play this game on Steam\n" -}}
+        {{- print (regexReplaceAll (regexQuoteMeta $.chezmoi.homeDir) . "") "\n" -}}
+    {{- end -}}
+{{- end }}
+
+
+# Game save data
+/.local/share/endless-sky/saves/
+/.local/share/endless-sky/steam_autocloud.vdf
