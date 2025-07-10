@@ -1,0 +1,7 @@
+[Actions]
+ReplayActionInHistory=true
+
+[General]
+MaxClipItems=50
+URLGrabberEnabled=true
+Version=6.4.2
