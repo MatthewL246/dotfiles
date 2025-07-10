@@ -13,3 +13,7 @@ AddPackage sqlitebrowser
 
 # GSettings/dconf settings editor
 AddPackage dconf-editor
+
+# Steam
+AddPackage steam
+AddPackage ttf-liberation # Arial-compatible font

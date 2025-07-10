@@ -79,6 +79,8 @@ CreateLink /etc/systemd/system/timers.target.wants/plocate-updatedb.timer /usr/l
 ## Nvidia driver
 AddPackage nvidia-open
 AddPackage nvidia-settings
+AddPackage nvidia-utils
+AddPackage lib32-nvidia-utils
 
 # Pacman hook that automatically updates the initramfs when the Nvidia driver is updated, necessary due to early Nvidia kernel module loading
 # TODO: yet another thing that modifies mkinitramfs.conf
