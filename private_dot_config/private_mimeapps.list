@@ -2,6 +2,7 @@
 application/json=org.kde.kwrite.desktop;org.kde.kate.desktop;
 application/vnd.kde.kxmlguirc=org.kde.kwrite.desktop;org.kde.kate.desktop;firefox.desktop;vim.desktop;
 application/x-docbook+xml=org.kde.kwrite.desktop;org.kde.kate.desktop;
+application/x-xbel=org.kde.kwrite.desktop;org.kde.kate.desktop;firefox.desktop;vim.desktop;
 application/x-yaml=org.kde.kwrite.desktop;org.kde.kate.desktop;
 text/csv=org.kde.kwrite.desktop;org.kde.kate.desktop;sqlitebrowser.desktop;vim.desktop;
 text/markdown=org.kde.kwrite.desktop;org.kde.kate.desktop;
@@ -12,6 +13,7 @@ text/x-cmake=org.kde.kwrite.desktop;org.kde.kate.desktop;
 application/json=org.kde.kwrite.desktop;
 application/vnd.kde.kxmlguirc=org.kde.kwrite.desktop;
 application/x-docbook+xml=org.kde.kwrite.desktop;
+application/x-xbel=org.kde.kwrite.desktop;
 application/x-yaml=org.kde.kwrite.desktop;
 text/csv=org.kde.kwrite.desktop;
 text/markdown=org.kde.kwrite.desktop;

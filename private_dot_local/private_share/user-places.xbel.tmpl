@@ -169,6 +169,51 @@
    </metadata>
   </info>
  </bookmark>
+ <separator>
+  <info>
+   <metadata owner="http://www.kde.org">
+    <UDI>/org/kde/fstab/fuse.sshfs/run/user/1000/56cad5d310f0496cb843b178a589913e</UDI>
+    <isSystemItem>true</isSystemItem>
+    <IsHidden>true</IsHidden>
+   </metadata>
+  </info>
+ </separator>
+ <separator>
+  <info>
+   <metadata owner="http://www.kde.org">
+    <UDI>/org/freedesktop/UDisks2/block_devices/dm_2d0</UDI>
+    <isSystemItem>true</isSystemItem>
+    <uuid>87a1ae23-f687-4f20-9747-ba1240c0febc</uuid>
+   </metadata>
+  </info>
+ </separator>
+ <separator>
+  <info>
+   <metadata owner="http://www.kde.org">
+    <UDI>/org/freedesktop/UDisks2/block_devices/nvme1n1p1</UDI>
+    <isSystemItem>true</isSystemItem>
+    <uuid>78f0b1ed-1efd-44fb-993f-cbe4dd8146d4</uuid>
+   </metadata>
+  </info>
+ </separator>
+ <separator>
+  <info>
+   <metadata owner="http://www.kde.org">
+    <UDI>/org/freedesktop/UDisks2/block_devices/nvme0n1p2</UDI>
+    <isSystemItem>true</isSystemItem>
+    <uuid>08140b28-cedb-404a-b9f7-96b3d877eed0</uuid>
+   </metadata>
+  </info>
+ </separator>
+ <separator>
+  <info>
+   <metadata owner="http://www.kde.org">
+    <UDI>/org/freedesktop/UDisks2/block_devices/dm_2d1</UDI>
+    <isSystemItem>true</isSystemItem>
+    <uuid>fa3062ad-37b7-4852-9c23-f5c77b78c410</uuid>
+   </metadata>
+  </info>
+ </separator>
  <bookmark href="kdeconnect://56cad5d310f0496cb843b178a589913e/">
   <title>MatthewsGalaxyS22</title>
   <info>
@@ -176,7 +221,15 @@
     <bookmark:icon name="kdeconnect"/>
    </metadata>
    <metadata owner="http://www.kde.org">
-    <ID>1752002886/0</ID>
+    <ID>
+     {{- /* This ID changes whenever the device is disconnected and reconnected. So, this is a hack (*not* parsing XML with regex) to find the current ID. */ -}}
+     {{- if stat .chezmoi.targetFile -}}
+         {{- /* The (?s: ...) modifier allows . to match newlines. */ -}}
+         {{- include .chezmoi.targetFile | replaceAllRegex "(?s:(?:.*kdeconnect://56cad5d310f0496cb843b178a589913e/.*?<ID>)(.*?)(?:</ID>.*))" "${1}" -}}
+     {{- else -}}
+         1752002886/0
+     {{- end -}}
+    </ID>
    </metadata>
   </info>
  </bookmark>
