@@ -58,6 +58,9 @@ function CupsPrintersConfFilter() {
 }
 AddFileContentFilter "/etc/cups/printers.conf" CupsPrintersConfFilter
 
+# Secrets
+IgnorePath "/etc/cryptsetup-keys.d/*"
+
 ## /usr
 
 # Auto-generated files
