@@ -11,3 +11,19 @@ ScrollFactor=0.5
 [Libinput][12851][4881][Ducky Ducky One 3 RGB]
 PointerAcceleration=0.000
 PointerAccelerationProfile=1
+
+[Libinput][12972][6][FRMW0004:00 32AC:0006 Consumer Control]
+ScrollFactor=1
+
+[Libinput][2362][628][PIXA3854:00 093A:0274 Mouse]
+PointerAccelerationProfile=1
+ScrollMethod=0
+
+[Libinput][2362][628][PIXA3854:00 093A:0274 Touchpad]
+ClickMethod=2
+DisableWhileTyping=false
+NaturalScroll=true
+PointerAcceleration=0.000
+PointerAccelerationProfile=2
+ScrollFactor=0.5
+ScrollMethod=1

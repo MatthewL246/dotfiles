@@ -29,6 +29,7 @@
 
 ## Shell
 /.bash_history
+/.python_history
 
 ## Editors
 /.config/katemetainfos
@@ -49,12 +50,15 @@
 
 ## Other
 /.lesshst
+/.sqlite_history
 
 
 # Auto-generated program files
 
 ## Temporary/cache files
 /.cache/
+/.cargo/
+!/.cargo/config.toml
 /.local/share/kate/katectags/
 /.local/share/libkunitconversion/currency.xml
 /.nv/ComputeCache/
@@ -105,6 +109,7 @@
 /.local/share/kdevappwizard/template_descriptions
 /.local/share/user-places.xbel.*
 /.var/
+/.wget-hsts
 
 
 # Firefox data, ignored by default because most of it is private data
@@ -141,5 +146,14 @@
 
 
 # Game save data
+/.local/share/endless-sky/recent.txt
 /.local/share/endless-sky/saves/
 /.local/share/endless-sky/steam_autocloud.vdf
+
+
+# Devie-specific files
+{{ if eq .chezmoi.hostname "matthew-framework" -}}
+# No need for Nvidia-related files
+/.nv/
+/.nvidia-settings-rc
+{{- end }}

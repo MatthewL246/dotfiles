@@ -1,0 +1,2 @@
+state
+	"Endless Sky High DPI" 1

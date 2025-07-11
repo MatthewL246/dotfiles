@@ -91,4 +91,4 @@ CenterSnapZone=20
 FocusStealingPreventionLevel=2
 
 [Xwayland]
-Scale=1
+Scale={{ if eq .chezmoi.hostname "matthew-framework" }}1.75{{ else }}1{{ end }}

@@ -1,14 +1,40 @@
 [
     {
-        "data": [
+        "data": [{{ if eq .chezmoi.hostname "matthew-framework" }}
+            {
+                "allowDdcCi": true,
+                "allowSdrSoftwareBrightness": false,
+                "autoRotation": "InTabletMode",
+                "brightness": {{ template "json-use-value-or-default" (list .chezmoi.targetFile ".[] | .data[] | select (.edidHash == \"0d458741b3ba3fa80204d982f29362c2\") | .brightness" 0.5 4 16) }},
+                "colorPowerTradeoff": "PreferEfficiency",
+                "colorProfileSource": "ICC",
+                "connectorName": "eDP-1",
+                "detectedDdcCi": false,
+                "edidHash": "0d458741b3ba3fa80204d982f29362c2",
+                "edidIdentifier": "BOE 3252 0 52 2023 0",
+                "edrPolicy": "always",
+                "highDynamicRange": false,
+                "iccProfilePath": "/etc/icc-profiles/BOE0CB4.icm",
+                "maxBitsPerColor": 0,
+                "mode": {{ template "json-use-value-or-default" (list .chezmoi.targetFile ".[] | .data[] | select (.edidHash == \"0d458741b3ba3fa80204d982f29362c2\") | .mode" (dict "height" 1920 "refreshRate" 120000 "width" 2880) 4 16) }},
+                "overscan": 0,
+                "rgbRange": "Automatic",
+                "scale": {{ template "json-use-value-or-default" (list .chezmoi.targetFile ".[] | .data[] | select (.edidHash == \"0d458741b3ba3fa80204d982f29362c2\") | .scale" 1.75 4 16) }},
+                "sdrBrightness": 200,
+                "sdrGamutWideness": 1,
+                "transform": "Normal",
+                "uuid": "7764d505-7896-4616-b143-82c596f7267f",
+                "vrrPolicy": "Automatic",
+                "wideColorGamut": false
+            },{{ end }}
             {
                 "allowDdcCi": true,
                 "allowSdrSoftwareBrightness": false,
                 "autoRotation": "InTabletMode",
                 "brightness": {{ template "json-use-value-or-default" (list .chezmoi.targetFile ".[] | .data[] | select (.edidHash == \"31bdbb74bf929858cda32498d97feaf6\") | .brightness" 0.5 4 16) }},
-                "colorPowerTradeoff": "PreferAccuracy",
+                "colorPowerTradeoff": "{{ if eq .chezmoi.hostname "matthew-framework" }}PreferEfficiency{{ else }}PreferAccuracy{{ end }}",
                 "colorProfileSource": "ICC",
-                "connectorName": "DP-1",
+                "connectorName": "{{ if eq .chezmoi.hostname "matthew-framework" }}DP-3{{ else }}DP-1{{ end }}",
                 "detectedDdcCi": true,
                 "edidHash": "31bdbb74bf929858cda32498d97feaf6",
                 "edidIdentifier": "AUS 10122 53171 9 2020 0",

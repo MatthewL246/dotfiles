@@ -5,3 +5,10 @@ InhibitSuspend=false
 [Activities][d43a201c-13c8-449c-a43c-9a983a0b0677]
 InhibitScreenManagement=false
 InhibitSuspend=false
+
+[BatteryManagement]
+BatteryCriticalLevel=2
+BatteryLowLevel=25
+
+[LowBattery][Performance]
+PowerProfile=power-saver

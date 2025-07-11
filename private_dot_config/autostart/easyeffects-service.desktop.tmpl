@@ -1,0 +1,10 @@
+{{- if eq .chezmoi.hostname "matthew-framework" -}}
+[Desktop Entry]
+Name=Easy Effects
+Comment=Easy Effects Service
+Exec=easyeffects --gapplication-service
+Icon=com.github.wwmm.easyeffects
+StartupNotify=false
+Terminal=false
+Type=Application
+{{ end -}}

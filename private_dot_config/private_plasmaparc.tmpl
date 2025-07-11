@@ -7,3 +7,4 @@ GlobalMute={{ . }}
 {{- with includeTemplate "ini-use-value-or-default" (list $.chezmoi.targetFile ".General | .GlobalMuteDevices" "") }}
 GlobalMuteDevices={{ . }}
 {{- end }}
+VolumeStep=2

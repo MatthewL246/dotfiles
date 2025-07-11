@@ -178,6 +178,8 @@
    </metadata>
   </info>
  </separator>
+ {{- /* Internal drives are necessarily going to be completely different between devices. */ -}}
+ {{- if eq .chezmoi.hostname "matthew-desktop" }}
  <separator>
   <info>
    <metadata owner="http://www.kde.org">
@@ -214,6 +216,26 @@
    </metadata>
   </info>
  </separator>
+ {{- else if eq .chezmoi.hostname "matthew-framework" }}
+ <separator>
+     <info>
+         <metadata owner="http://www.kde.org">
+             <UDI>/org/freedesktop/UDisks2/block_devices/dm_2d0</UDI>
+             <isSystemItem>true</isSystemItem>
+             <uuid>ce6a90da-e2f3-4610-aba7-3944441fbf76</uuid>
+         </metadata>
+     </info>
+ </separator>
+ <separator>
+     <info>
+         <metadata owner="http://www.kde.org">
+             <UDI>/org/freedesktop/UDisks2/block_devices/nvme0n1p2</UDI>
+             <isSystemItem>true</isSystemItem>
+             <uuid>a71e4ec0-393a-4401-855e-999a297a9c7b</uuid>
+         </metadata>
+     </info>
+ </separator>
+ {{- end }}
  <bookmark href="kdeconnect://56cad5d310f0496cb843b178a589913e/">
   <title>MatthewsGalaxyS22</title>
   <info>
@@ -223,7 +245,7 @@
    <metadata owner="http://www.kde.org">
     <ID>
      {{- /* This ID changes whenever the device is disconnected and reconnected. So, this is a hack (*not* parsing XML with regex) to find the current ID. */ -}}
-     {{- if stat .chezmoi.targetFile -}}
+     {{- if and (stat .chezmoi.targetFile) (include .chezmoi.targetFile | regexMatch "kdeconnect://56cad5d310f0496cb843b178a589913e/") -}}
          {{- /* The (?s: ...) modifier allows . to match newlines. */ -}}
          {{- include .chezmoi.targetFile | replaceAllRegex "(?s:(?:.*kdeconnect://56cad5d310f0496cb843b178a589913e/.*?<ID>)(.*?)(?:</ID>.*))" "${1}" -}}
      {{- else -}}

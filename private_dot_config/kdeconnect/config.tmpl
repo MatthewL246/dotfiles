@@ -1,0 +1,12 @@
+[General]
+disabled_providers=@Invalid()
+keyAlgorithm=EC
+name=
+{{- if eq .chezmoi.hostname "matthew-desktop" -}}
+    Matthews Desktop
+{{- else if eq .chezmoi.hostname "matthew-framework" -}}
+    Matthews Framework
+{{- else -}}
+    {{- /* TODO: choose a better way than just checking the hostname because Chezmoi itself manages the hostname via aconfmgr. */ -}}
+    {{- warnf "Unexpected hostname" -}}
+{{- end }}
