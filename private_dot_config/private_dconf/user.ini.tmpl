@@ -10,6 +10,7 @@ window-height={{ template "ini-use-value-or-default" (list .chezmoi.targetFile "
 window-is-maximized={{ template "ini-use-value-or-default" (list .chezmoi.targetFile ".\"ca/desrt/dconf-editor\" | .\"window-is-maximized\"" "false") }}
 window-width={{ template "ini-use-value-or-default" (list .chezmoi.targetFile ".\"ca/desrt/dconf-editor\" | .\"window-width\"" 540) }}
 
+{{ if eq .chezmoi.hostname "matthew-framework" -}}
 [com/github/wwmm/easyeffects]
 bypass=false
 last-loaded-output-preset='{{ template "ini-use-value-or-default" (list .chezmoi.targetFile ".\"com/github/wwmm/easyeffects\" | .\"last-loaded-output-preset\"" "") }}'
@@ -102,6 +103,8 @@ split-frequency3=5000.0
 [com/github/wwmm/easyeffects/streamoutputs/stereotools/0]
 bypass=false
 stereo-base=0.30000000000000004
+
+{{ end -}}
 
 [org/gnome/desktop/a11y/applications]
 screen-reader-enabled=false
