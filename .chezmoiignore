@@ -159,6 +159,13 @@
 {{- end }}
 
 
+# GPG keys (TODO: store a list of public keys to import)
+/.gnupg/crls.d/
+/.gnupg/private-keys*.d/
+/.gnupg/public-keys.d/
+/.gnupg/trustdb.gpg
+
+
 # SSH keys
 /.ssh/id_*
 
