@@ -1,0 +1,15 @@
+[Desktop Entry]
+Comment=Manage Syncthing settings in the web UI
+Exec=xdg-open http://localhost:8384/
+GenericName=
+Icon=syncthing
+Name=Syncthing Web UI
+NoDisplay=false
+Path=
+PrefersNonDefaultGPU=false
+StartupNotify=false
+Terminal=false
+TerminalOptions=
+Type=Application
+X-KDE-SubstituteUID=false
+X-KDE-Username=

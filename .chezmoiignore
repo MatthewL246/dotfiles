@@ -19,6 +19,8 @@
 ## Non-default directories
 /temp/*
 !/temp/.directory
+/Sync/*
+!/Sync/.directory
 
 
 # Files managed by scripts
@@ -69,6 +71,7 @@
 ## Secrets that can be regenerated or restored from a backup
 /.config/kdeconnect/certificate.pem
 /.config/kdeconnect/privateKey.pem
+/.config/syncthing/*.pem
 /.local/share/krdpserver/krdp.crt
 /.local/share/krdpserver/krdp.key
 /.local/share/kwalletd/

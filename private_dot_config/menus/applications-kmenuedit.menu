@@ -1,0 +1,40 @@
+<!DOCTYPE Menu PUBLIC '-//freedesktop//DTD Menu 1.0//EN' 'http://www.freedesktop.org/standards/menu-spec/1.0/menu.dtd'>
+<Menu>
+ <Menu>
+  <Name>System</Name>
+  <Layout>
+   <Merge type="files"/>
+   <Filename>Syncthing Web UI.desktop</Filename>
+   <Merge type="menus"/>
+   <Menuname>ScreenSavers</Menuname>
+   <Menuname>Terminal</Menuname>
+   <Filename>avahi-discover.desktop</Filename>
+   <Filename>org.kde.drkonqi.coredump.gui.desktop</Filename>
+   <Filename>ca.desrt.dconf-editor.desktop</Filename>
+   <Filename>org.kde.discover-flatpak.desktop</Filename>
+   <Filename>org.kde.discover.desktop</Filename>
+   <Filename>org.kde.discover.urlhandler.desktop</Filename>
+   <Filename>org.kde.discover.snap.desktop</Filename>
+   <Filename>org.kde.dolphin.desktop</Filename>
+   <Filename>lstopo.desktop</Filename>
+   <Filename>org.kde.kinfocenter.desktop</Filename>
+   <Filename>org.kde.kcolorschemeeditor.desktop</Filename>
+   <Filename>org.kde.kdeconnect-settings.desktop</Filename>
+   <Filename>kdesystemsettings.desktop</Filename>
+   <Filename>org.kde.konsole.desktop</Filename>
+   <Filename>org.kde.kwalletmanager.desktop</Filename>
+   <Filename>cups.desktop</Filename>
+   <Filename>org.kde.kmenuedit.desktop</Filename>
+   <Filename>nvidia-settings.desktop</Filename>
+   <Filename>system-config-printer.desktop</Filename>
+   <Filename>org.kde.plasma-systemmonitor.desktop</Filename>
+   <Filename>systemsettings.desktop</Filename>
+   <Filename>org.freedesktop.Xwayland.desktop</Filename>
+   <Separator/>
+   <Menuname>More</Menuname>
+  </Layout>
+  <Include>
+   <Filename>Syncthing Web UI.desktop</Filename>
+  </Include>
+ </Menu>
+</Menu>
