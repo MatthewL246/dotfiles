@@ -3,3 +3,11 @@ certificate="{{ template "ini-use-value-or-default" (list .chezmoi.targetFile ".
 name=MatthewsGalaxyS22
 protocolVersion=8
 type=phone
+
+{{ if eq .chezmoi.hostname "matthew-desktop" -}}
+[a22b3b423e1b48cda5a1102f9e1fe73b]
+certificate="{{ template "ini-use-value-or-default" (list .chezmoi.targetFile ".\"a22b3b423e1b48cda5a1102f9e1fe73b\" | .certificate" "") }}"
+{{- end }}
+name=Matthews Framework
+protocolVersion=8
+type=desktop
