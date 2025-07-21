@@ -1,0 +1,33 @@
+Host pikvm
+  HostName 10.1.0.5
+  User matthew
+
+Host blink
+  HostName 192.168.1.2
+  User matthew
+
+Host blink-initramfs
+  HostName 192.168.1.2
+  User root
+  UserKnownHostsFile ~/.ssh/known_hosts.initramfs
+
+Host blink-remote
+  HostName {{ .beelinkRemoteIp }}
+  User matthew
+  Port {{ .beelinkRemotePort }}
+
+Host blink-initramfs-remote
+  HostName {{ .beelinkRemoteIp }}
+  User root
+  Port {{ .beelinkRemotePort }}
+  UserKnownHostsFile ~/.ssh/known_hosts.initramfs
+
+Host pikvm-remote
+  HostName 10.1.0.5
+  User matthew
+  ProxyJump blink-remote
+
+Host hetz
+  HostName {{ .hetznerServerIp }}
+  User matthew
+  Port {{ .hetznerServerPort }}

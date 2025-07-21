@@ -157,3 +157,13 @@
 /.nv/
 /.nvidia-settings-rc
 {{- end }}
+
+
+# SSH keys
+/.ssh/id_*
+
+
+# SSH hosts (TODO: store encrypted)
+/.ssh/known_hosts
+/.ssh/known_hosts.initramfs
+/.ssh/known_hosts.old
