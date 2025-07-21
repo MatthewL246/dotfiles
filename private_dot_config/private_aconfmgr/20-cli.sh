@@ -40,3 +40,6 @@ echo "\$-regextype posix-extended -not \\( \\( $quoted_lostfiles_ignore_args\\) 
 
 # CTags: used by several Kate plugins for code navigation
 AddPackage ctags
+
+# Syncthing
+AddPackage syncthing

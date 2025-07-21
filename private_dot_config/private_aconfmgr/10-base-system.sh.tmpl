@@ -22,7 +22,7 @@ AddPackage linux-firmware-realtek
 AddPackage btrfs-progs
 
 # Base system configuration
-CopyFile /etc/crypttab # TODO: requires creation of keyfile
+CopyFile /etc/crypttab # TODO: requires creation of keyfile and is not declarative
 CopyFile /etc/fstab
 CopyFile /etc/hostname
 CopyFile /etc/locale.conf

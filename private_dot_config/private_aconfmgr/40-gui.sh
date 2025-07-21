@@ -17,3 +17,11 @@ AddPackage dconf-editor
 # Steam
 AddPackage steam
 AddPackage ttf-liberation # Arial-compatible font
+
+# KeePassXC password manager
+AddPackage keepassxc
+
+# YubiKey tools
+AddPackage yubikey-manager
+AddPackage --foreign yubico-authenticator
+CreateLink /etc/systemd/system/sockets.target.wants/pcscd.socket /usr/lib/systemd/system/pcscd.socket

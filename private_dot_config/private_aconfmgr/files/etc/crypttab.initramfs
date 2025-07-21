@@ -2,4 +2,4 @@
 # See crypttab(5) for details.
 
 # <name> <device> <password> <options>
-root LABEL=Arch_Linux_LUKS none tpm2-device=auto
+root LABEL=Arch_Linux_LUKS none tpm2-device=auto,tpm2-measure-pcr=yes

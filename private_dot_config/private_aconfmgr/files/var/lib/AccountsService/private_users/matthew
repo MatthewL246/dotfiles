@@ -1,4 +1,5 @@
 [User]
 Session=
+PasswordHint=
 Icon=/var/lib/AccountsService/icons/matthew
 SystemAccount=false

@@ -110,6 +110,7 @@ IgnorePath "/var/lib/plymouth/boot-duration"
 IgnorePath "/var/lib/portables/*"
 IgnorePath "/var/lib/private/*"
 IgnorePath "/var/lib/systemd/*"
+IgnorePath "/var/lib/tailscale/*"
 IgnorePath "/var/lib/tpm2-tss/*"
 IgnorePath "/var/lib/upower/*"
 
@@ -121,6 +122,7 @@ IgnorePath "/var/lib/lastlog"
 IgnorePath "/var/lib/libuuid"
 IgnorePath "/var/lib/machines"
 IgnorePath "/var/lib/portables"
+IgnorePath "/var/lib/power-profiles-daemon"
 IgnorePath "/var/lib/private"
 
 # Secure Boot keys should be unique per device, and it would honestly be easier to just regenerate them and reset the UEFI back to setup mode than store them safely

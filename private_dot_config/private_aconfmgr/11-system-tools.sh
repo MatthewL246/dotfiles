@@ -104,3 +104,19 @@ CreateLink /etc/systemd/system/sockets.target.wants/avahi-daemon.socket /usr/lib
 AddPackage bluez-utils
 CreateLink /etc/systemd/system/bluetooth.target.wants/bluetooth.service /usr/lib/systemd/system/bluetooth.service
 CreateLink /etc/systemd/system/dbus-org.bluez.service /usr/lib/systemd/system/bluetooth.service
+
+
+## Power profiles (used in KDE Plasma)
+AddPackage power-profiles-daemon
+CreateLink /etc/systemd/system/graphical.target.wants/power-profiles-daemon.service /usr/lib/systemd/system/power-profiles-daemon.service
+
+
+## Tailscale (TODO: not configured declaratively)
+AddPackage tailscale
+CreateLink /etc/systemd/system/multi-user.target.wants/tailscaled.service /usr/lib/systemd/system/tailscaled.service
+
+
+## Paru AUR helper
+AddPackage base-devel
+AddPackage --foreign paru
+CopyFile /etc/paru.conf
