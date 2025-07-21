@@ -1,5 +1,5 @@
 [Favorites-org.kde.plasma.kickoff.favorites.instance-3-5c0b8d00-77e5-4aba-8df2-66659b305a84]
-ordering=applications:systemsettings.desktop,applications:org.kde.dolphin.desktop,applications:org.kde.konsole.desktop,preferred://browser,applications:org.kde.kate.desktop,applications:org.kde.kwrite.desktop
+ordering=applications:systemsettings.desktop,applications:org.kde.dolphin.desktop,applications:org.kde.konsole.desktop,preferred://browser,applications:org.kde.kate.desktop,applications:org.kde.kwrite.desktop,applications:org.keepassxc.KeePassXC.desktop,applications:com.yubico.yubioath.desktop
 
 [Favorites-org.kde.plasma.kickoff.favorites.instance-3-global]
-ordering=applications:systemsettings.desktop,applications:org.kde.dolphin.desktop,applications:org.kde.konsole.desktop,preferred://browser,applications:org.kde.kate.desktop,applications:org.kde.kwrite.desktop
+ordering=applications:systemsettings.desktop,applications:org.kde.dolphin.desktop,applications:org.kde.konsole.desktop,preferred://browser,applications:org.kde.kate.desktop,applications:org.kde.kwrite.desktop,applications:org.keepassxc.KeePassXC.desktop,applications:com.yubico.yubioath.desktop
