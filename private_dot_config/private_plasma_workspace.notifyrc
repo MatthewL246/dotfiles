@@ -5,7 +5,7 @@ Action=Popup|Sound
 Action=Popup|Sound
 
 [Event/exitkde]
-Action=Popup
+Action=
 
 [Event/messageCritical]
 Action=Popup|Sound|Taskbar
