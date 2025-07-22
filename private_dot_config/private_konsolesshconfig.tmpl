@@ -1,0 +1,42 @@
+[Global plugin config]
+manageProfile=false
+
+[SSH Config][blink]
+hostname=192.168.1.2
+identifier=blink
+importedFromSshConfig=true
+port=
+profileName=Bash
+sshkey=
+useSshConfig=true
+username=matthew
+
+[SSH Config][blink-remote]
+hostname={{ .beelinkRemoteIp }}
+identifier=blink-remote
+importedFromSshConfig=true
+port={{ .beelinkRemotePort }}
+profileName=Bash
+sshkey=
+useSshConfig=true
+username=matthew
+
+[SSH Config][hetz]
+hostname={{ .hetznerServerIp }}
+identifier=hetz
+importedFromSshConfig=true
+port={{ .hetznerServerPort }}
+profileName=
+sshkey=
+useSshConfig=true
+username=matthew
+
+[SSH Config][pikvm]
+hostname=10.1.0.5
+identifier=pikvm
+importedFromSshConfig=true
+port=
+profileName=Bash
+sshkey=
+useSshConfig=true
+username=matthew
