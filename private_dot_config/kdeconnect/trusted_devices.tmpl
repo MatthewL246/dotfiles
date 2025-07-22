@@ -1,19 +1,23 @@
+{{- if eq .chezmoi.hostname "matthew-framework" -}}
+[2e7fe0fcf399439799f36c2fa28c22f9]
+certificate="{{ template "ini-use-value-or-default" (list .chezmoi.targetFile ".\"2e7fe0fcf399439799f36c2fa28c22f9\" | .certificate" "") }}"
+name=Matthews Desktop
+protocolVersion=8
+type=desktop
+
+{{ end -}}
+
 [56cad5d310f0496cb843b178a589913e]
 certificate="{{ template "ini-use-value-or-default" (list .chezmoi.targetFile ".\"56cad5d310f0496cb843b178a589913e\" | .certificate" "") }}"
 name=MatthewsGalaxyS22
 protocolVersion=8
 type=phone
 
-{{ if eq .chezmoi.hostname "matthew-desktop" -}}
+{{- if eq .chezmoi.hostname "matthew-desktop" }}
+
 [a22b3b423e1b48cda5a1102f9e1fe73b]
 certificate="{{ template "ini-use-value-or-default" (list .chezmoi.targetFile ".\"a22b3b423e1b48cda5a1102f9e1fe73b\" | .certificate" "") }}"
 name=Matthews Framework
-protocolVersion=8
-type=desktop
-{{- else if eq .chezmoi.hostname "matthew-framework" -}}
-[2e7fe0fcf399439799f36c2fa28c22f9]
-certificate="{{ template "ini-use-value-or-default" (list .chezmoi.targetFile ".\"2e7fe0fcf399439799f36c2fa28c22f9\" | .certificate" "") }}"
-name=Matthews Desktop
 protocolVersion=8
 type=desktop
 {{- end }}
