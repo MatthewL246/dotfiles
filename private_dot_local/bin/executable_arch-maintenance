@@ -1,52 +1,50 @@
 #!/usr/bin/env bash
 
 # Basic system maintenance function based on https://wiki.archlinux.org/title/System_maintenance
-function arch-maintenance {
-    echo
-    echo "=== Failed systemd services ==="
-    systemctl --failed
+echo
+echo "=== Failed systemd services ==="
+systemctl --failed
 
-    echo
-    echo "=== Errors in systemd journal (from this boot) ==="
-    journalctl --boot --catalog --priority emerg..err
+echo
+echo "=== Errors in systemd journal (from this boot) ==="
+journalctl --boot --catalog --priority emerg..err
 
-    echo
-    echo "=== Updating paru/pacman packages ==="
-    read -p "Press enter to continue."
-    paru -Syu --ignore llama.cpp
+echo
+echo "=== Updating paru/pacman packages ==="
+read -p "Press enter to continue."
+paru -Syu --ignore llama.cpp
 
-    echo
-    echo "=== Running pacdiff to find .pacnew and .pacsave files ==="
-    read -p "Press enter to continue."
-    sudo pacdiff --find
+echo
+echo "=== Running pacdiff to find .pacnew and .pacsave files ==="
+read -p "Press enter to continue."
+sudo pacdiff --find
 
-    echo
-    echo "=== Running checkservices to restart updated services ==="
-    read -p "Press enter to continue."
-    sudo checkservices -P -i sddm.service
+echo
+echo "=== Running checkservices to restart updated services ==="
+read -p "Press enter to continue."
+sudo checkservices -P -i sddm.service
 
-    echo
-    echo "=== Removing uninstalled packages from the cache ==="
-    read -p "Press enter to continue."
-    sudo paccache --remove --uninstalled --keep 0
+echo
+echo "=== Removing uninstalled packages from the cache ==="
+read -p "Press enter to continue."
+sudo paccache --remove --uninstalled --keep 0
 
-    echo
-    echo "=== Orphaned dependencies (including cycles) ==="
-    pacman -Qqd | pacman -Rsu --print -
+echo
+echo "=== Orphaned dependencies (including cycles) ==="
+pacman -Qqd | pacman -Rsu --print -
 
-    echo
-    echo "=== Orphaned dependencies (including optional) ==="
-    pacman -Qttd
+echo
+echo "=== Orphaned dependencies (including optional) ==="
+pacman -Qttd
 
-    echo
-    echo "=== Foreign packages ==="
-    pacman -Qm
+echo
+echo "=== Foreign packages ==="
+pacman -Qm
 
-    echo
-    echo "=== Broken symlinks ==="
-    sudo find / -type d \( -path "/dev" -o -path "/proc" -o -path "/run" -o -path "/sys" -o -path "/home/matthew/.local/share/Steam" \) -prune -o -xtype l -print
+echo
+echo "=== Broken symlinks ==="
+sudo find / -type d \( -path "/dev" -o -path "/proc" -o -path "/run" -o -path "/sys" -o -path "/home/matthew/.local/share/Steam" \) -prune -o -xtype l -print
 
-    echo
-    echo "=== Pacreport ==="
-    sudo pacreport --missing-files
-}
+echo
+echo "=== Pacreport ==="
+sudo pacreport --missing-files
