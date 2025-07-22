@@ -7,7 +7,13 @@ type=phone
 {{ if eq .chezmoi.hostname "matthew-desktop" -}}
 [a22b3b423e1b48cda5a1102f9e1fe73b]
 certificate="{{ template "ini-use-value-or-default" (list .chezmoi.targetFile ".\"a22b3b423e1b48cda5a1102f9e1fe73b\" | .certificate" "") }}"
-{{- end }}
 name=Matthews Framework
 protocolVersion=8
 type=desktop
+{{- else if eq .chezmoi.hostname "matthew-framework" -}}
+[2e7fe0fcf399439799f36c2fa28c22f9]
+certificate="{{ template "ini-use-value-or-default" (list .chezmoi.targetFile ".\"2e7fe0fcf399439799f36c2fa28c22f9\" | .certificate" "") }}"
+name=Matthews Desktop
+protocolVersion=8
+type=desktop
+{{- end }}
